@@ -1,0 +1,73 @@
+\documentclass[bibliography=totocnumbered, listof=numbered, titlepage]{dhbwreport}
+
+\newcounter{myPageCounter}
+
+\usepackage{blindtext}
+
+\subject{Seminar Paper}
+\title{<Given Title>}
+\subtitle{<The title should be short and raise interest and could be state more precisely here>}
+\titlehead{5th and 6th Internship}
+
+\author{León Mutschke, Jonas Siefker}% 
+\matriculationno{4305058, 6405724}% 1234567
+\course{TINF14AIBC}% TINF14AIBC
+\publishers{Cooperate State University Baden-Württemberg Mannheim}
+\date{May 2017}% Date on which to hand in this text
+\corrector{Prof. Dr. Karl Stroetman}% The person in charge of correction in the name of the DHBW
+\timeframe{<startdate - enddate, XX weeks>}% Timeframe in which the work was to be done, e.g. 12 weeks
+
+\uppertitleback{}
+\lowertitleback{}% Sperrvermerk
+
+\dedication{}
+
+\hypersetup
+{
+	pdfkeywords={{key} {words}}, 	% list of keywords
+}
+
+\begin{document}
+	\pagenumbering{Roman}
+	\maketitle
+	\pagestyle{plain}
+	\honestyRep{}
+	\input{./report/01-scopePurpose}
+	\input{./report/02-zusammenfassungAbstract}
+	\input{./report/03-task}
+
+	\tableofcontents
+
+	\pagestyle{scrheadings}
+	
+	% \addcontentsline{toc}{chapter}{\contentsname}
+	% \chapter*{}
+	% \addcontentsline{toc}{chapter}{Einheiten \& Größen}
+	
+	% \chapter*{Preface}
+	\setcounter{myPageCounter}{\value{page}}
+	\pagenumbering{arabic}
+	\setcounter{page}{\themyPageCounter}
+	
+	\input{./report/04-blindtext}
+	% Einleitung (Gegenstand und Ziele der Arbeit/Aufgabenbeschreibung, Einführung in Thema, Stand der Technik/Forschung, Motivation der Aufgabenstellung/Vorausblick)
+	% Hauptteil (Anforderungsdefinition, Anforderungsanalyse, Lösungsgenerierung, Lösungsbewertung, Umsetzung) in sinnvollen Gliederungspunkten
+	% Zusammenfassung und Ausblick
+	
+	\clearpage
+	\pagestyle{plain}
+	\setcounter{myPageCounter}{\value{page}}
+	\pagenumbering{Roman}
+	\setcounter{page}{\themyPageCounter}
+	
+	\begin{appendix}
+		\input{./report/abbreviations}
+		\listoffigures
+		% \addcontentsline{toc}{chapter}{\listfigurename}
+		\listoftables
+		% \addcontentsline{toc}{chapter}{\listtablename}
+		\lstlistoflistings
+		\bibliography{./report/bibliography}
+		\bibliographystyle{unsrtnat}	
+	\end{appendix}
+\end{document}

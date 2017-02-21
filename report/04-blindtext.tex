@@ -1,0 +1,73 @@
+%!TEX root = ../dhbw-report.tex
+
+\Blinddocument
+\chapter{Pictures}
+
+	\section{Example for a basic figure}
+
+	\Blindtext[1]
+	\Blindtext[1]
+
+	\section{Examplew for subfigures}
+	\Blindtext[1]
+	\begin{figure}[htb] % requires "subfigure" package
+		\subfigure[DHBW]{\includegraphics[width=0.49\textwidth]{./pic/logo/dhbw.png}}
+		\caption{Logos nex to each other}
+		\label{fig:logos1}
+	\end{figure}
+
+	\Blindtext[1]
+
+	\begin{figure}[htb] % requires "subfigure" package
+		\subfigure[DHBW]{\includegraphics[width=0.49\textwidth]{./pic/logo/dhbw.png}}
+		\caption{Logos underneath each other}
+		\label{fig:logos2}
+	\end{figure}
+
+	\Blindtext[1]
+
+\chapter{Tables}
+
+	\section{Example for a basic table (tabular)}
+	Look at table~\ref{tab:tabular_example} to see a nice example for a table.
+	\Blindtext[1]
+	\begin{table}[ht]
+		\begin{tabular}{|l|c|r|}% number of columns with or without border
+			\hline
+			Options & Description & Something \\ \hline
+			l & left orientated & each column\\ \hline
+			c & center alignment & is as wide as its \\ \hline
+			r & guess what & largest cell needs to be, no wraping of text is done.\\ \hline
+		\end{tabular}
+		\caption{some usefull text}
+		\label{tab:tabular_example}
+	\end{table}
+	\Blindtext[1]
+
+	\section[A table with wrapping lines]{Example for a table with wrapping lines (tabularx)}
+	Look at table~\ref{tab:tabularx_example} to see a nice example for a table.
+	\Blindtext[1]
+	\begin{table}[hb]
+		\centering
+		\begin{tabularx}{0.9\textwidth}{|l|C|r|X|}% number of columns with or without border
+			\hline
+			Options & Description & Something & Something else\\\hline\hline
+			l & left orientated & each traditional column & Each of the new column types \\
+			C & center alignment, dynamic size & is as wide as its & is as wide as it is allowed to be.\\
+			r & guess what & largest cell needs to be. & It is restricted by\\
+			X & left orientation, dynamic size & - & the remaining size of the table not used by other columns, thus text wrap does happen \\
+			\hline
+		\end{tabularx}
+		\caption{some usefull text}
+		\label{tab:tabularx_example}
+	\end{table}
+	\Blindtext[1]
+
+\chapter{Quotes}
+	\blindtext
+	\begin{quote}
+		``Ein Plagiat (von lat. plagium, "`Menschenraub"', "`Raub der Seele"'[1]) ist die Vorlage fremden geistigen Eigentums bzw. eines fremden 
+		Werkes als eigenes Werk oder als Teil eines eigenen Werkes. Dies kann sich auf eine wortwörtliche Übernahme, eine Bearbeitung, oder auch 
+		die Darstellung von Ideen oder Argumenten beziehen.''\cite{wiki:plag} \ac{HTTP}
+	\end{quote}
+	\blindtext

@@ -1,0 +1,12 @@
+*.aux
+dhbw-report.bbl
+dhbw-report.blg
+dhbw-report.fdb_latexmk
+dhbw-report.fls
+dhbw-report.lof
+dhbw-report.log
+dhbw-report.lot
+dhbw-report.out
+dhbw-report.synctex.gz
+dhbw-report.toc
+dhbw-report.lol
