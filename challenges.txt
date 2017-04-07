@@ -1,0 +1,2 @@
+Beta distribution:
+    Intervall [0,1]. Problem nicht definiert.
