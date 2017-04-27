@@ -22,7 +22,7 @@
 	For the statistical distributions asset a new file \lstinline{stat.stlx} was created inside the \lstinline{integrationTests} folder. This file holds the tests for all 24 implemented distributions. At the beginning of the file, a special file named \lstinline{baseIntegrationTest.stlx} is loaded that will validate the tests. For each distribution, a \setlx\ procedure was written. The following listing shows this with an example. 
 
 	\begin{center}
-		\begin{lstlisting}[caption=Test File Example, language=setlx, label=lis:exampleCode]
+		\begin{lstlisting}[caption={Test File Example}, language={setlx}, label=lis:exampleCode]
 		statChiSquared := procedure() {
 			if (stat_chiSquared(2,3) == 0.2075537487102973) {
 				correct := true;
@@ -67,10 +67,10 @@
 		\end{lstlisting}
 	\end{center}
 
-	In total 24 statistical distributions were implemented. For each function, a test and a reference file were created, so that there are 48 files in total. All test files follow the same pattern, which is shown in the following listing. The reference files only contain the solution of the program.
+	In total 24 statistical distributions were implemented. For each function, a test and a reference file were created, so that there are 48 files in total. All test files follow the same pattern, which is shown in the following listing. The reference files only contain the solution of the program, which would be 0.04405413986167643 in case of the example below.
 
 	\begin{center}
-		\begin{lstlisting}[caption=Test File Example, language=setlx, label=lis:exampleCode]
+		\begin{lstlisting}[caption={Test File Example}, language={setlx}, label={lis:exampleCode}]
 		// Example for stat_normal(x, mu, sigma)
 
 		statNormal := procedure(x, mu, sigma) {
@@ -86,3 +86,24 @@
 		\end{lstlisting}
 	\end{center}
 
+
+\section{Testing with Python}
+
+	In addition to the integration and the regression tests, the computed \setlx\ values should also be compared with values computed with the programming language R or Python. It was decided to test with Python because of existing knowledge. The open-source library \ac{SciPy} was used. \ac{SciPy} provides many user-friendly and efficient numerical routines. More about \ac{SciPy} can be read \href{https://www.scipy.org/}{here}.
+
+	\ac{SciPy} is installed very easily. It basically just needs \lstinline{Python} and \lstinline{Pip}, a package from Python. However, it is advisable to install \ac{SciPy} in a virtual environment, an isolated Python environment, just for this project. The following commands need to be executed on Debian-based operating systems to install everything needed.
+
+	\begin{center}
+		\begin{lstlisting}[caption={Install Virtual Environment and SciPy}, language={bash}, label={lis:scipy}]
+			sudo apt-get install python python-pip python-virtualenv virtualenvwrapper
+			echo source /usr/share/virtualenvwrapper/virtualenvwrapper.sh >> ~/.bashrc
+			source ~/.bashrc
+			# Create virtual environment
+			mkvirtualenv studienarbeit
+
+			# If virtual environment is activated, execute the following:
+			# Update pip
+			pip install -U pip
+			pip install scipy
+		\end{lstlisting}
+	\end{center}
