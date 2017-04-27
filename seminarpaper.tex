@@ -13,6 +13,8 @@
 \usepackage{enumerate}
 \usepackage{color} 
 \usepackage{xfrac}
+\usepackage{csquotes}
+\usepackage{listings, lstautogobble}
 
 
 \usepackage{hyperref}
@@ -30,6 +32,55 @@
 \addtolength{\oddsidemargin}{-1cm}
 \addtolength{\evensidemargin}{-1cm}
 \addtolength{\topmargin}{-1cm}
+
+
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.97}
+\definecolor{editorBlue}{rgb}{0.00, 0.56, 1.00}
+\definecolor{editorGreen}{rgb}{0.17, 0.66, 0.10}
+
+\lstdefinelanguage{javascript}{
+  morekeywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  morecomment=[s]{/*}{*/},
+  morecomment=[l]//,
+  morestring=[b]",
+  morestring=[b]'
+}
+
+\lstset{ %
+	backgroundcolor=\color{blueLight},
+	breakatwhitespace=true,
+	breaklines=true,
+	captionpos=b,
+	extendedchars=true,
+	showstringspaces=false,
+	stepnumber=1,
+	tabsize=4,
+	autogobble=true,
+	% Basic design
+	backgroundcolor=\color{editorGray},
+	basicstyle={\small\ttfamily},   
+	frame=l,
+	% Line numbers
+	xleftmargin={0.75cm},
+	numbers=left,
+	stepnumber=1,
+	firstnumber=1,
+	numberfirstline=true,
+	% Code design   
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{darkgray}\ttfamily,
+	ndkeywordstyle=\color{editorGreen}\bfseries,
+	stringstyle=\color{editorGreen},
+	% Support for German umlauts
+	literate=%
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}1
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
+}
 
 \usepackage{fancyhdr}
 \usepackage{lastpage} 
@@ -173,6 +224,7 @@
 \include{task}
 \tableofcontents
 \include{introduction}
+\include{testing}
 
 
 
