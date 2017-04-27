@@ -2,4 +2,43 @@
 
 \chapter{Testing the Implementation}
 
-	This chapter describes the process of testing the implementation. As defined in the task, the values of the statistical distributions implemented in \setlx\ should be compared with the values computed in the programming language R or Python. The programming language Python was chosen due to existing knowledge. The \setlx\ interpreter already possesses a script which tests examples located in a specific example folder, named \lstinline{example_SetlX_code}.
+	This chapter describes the process of testing the implementation. As defined in the task, the values of the statistical distributions implemented in \setlx\ should be compared with the values computed in the programming language R or Python. The programming language Python was chosen due to existing knowledge. The \setlx\ interpreter possesses two special folders for testing. These folders are called \lstinline{example_SetlX_code} and \lstinline{integrationTests}. The first one contains example programs written in the \setlx\ language with the purpose to test the interpreter and demonstrate some of its functions. The second one contains some very simple \setlx\ code examples. These examples are used to test specific features for regressions. A script named \lstinline{runIntegrationTests} can be executed to test these tests.
+
+	To test all examples from both folders, another script named \lstinline{test_all_examples} can be executed. The script will then first run the integration tests and after validating these tests, the script will check, inside the \lstinline{example_SetlX_code} folder, for files which ends in \lstinline{.stlx}, which will then be executed, if there is also another file with the same basename, but ending in \lstinline{.stlx.reference}. The \lstinline{.stlx} files contain a normal \setlx\ program, while the corresponding \lstinline{.stlx.reference} files only contain the solution of the \setlx\ program. For all \setlx files, the script compares the output of the execution with the \lstinline{.stlx.reference} files using \lstinline{diff}. If the result of diff is empty, the output matches the solution, and the next source file is executed. If it does not match, the script will stop and the result needs to be analyzed.
+
+	\section{\setlx\ Example Code}
+
+	The idea was to create new tests files for all the implemented statistical distributions. Therefore the structure of \lstinline{example_SetlX_code} was analyzed. For each extension, e.g. for the plotting extension, there exists one folder containing all test files and reference files. Therefore it was decided to create a new folder named \lstinline{stat_test_code}, so that the new folder structure of \lstinline{example_SetlX_code} looks like the following:
+	
+	\begin{center}
+		\begin{lstlisting}[caption=Folder Structure example\_SetlX\_code, label=lis:structureExample]
+			example_SetlX_code
+			|-- animation_testcode
+			|-- converted_Setl2_code
+			|-- performance_test_code
+			|   `-- results
+			|-- plotting_test_code
+			|-- simple_examples
+			|   `-- gfx_addon
+			`-- stat_test_code
+		\end{lstlisting}
+	\end{center}
+
+	A test and a reference file were created for all 24 distributions. All test files follow the same pattern. The pattern is shown in the following listing.
+
+	\begin{center}
+		\begin{lstlisting}[caption=Test File Example, language=setlx, label=lis:exampleCode]
+		// Example for stat_normal(x, mu, sigma)
+
+		statNormal := procedure(x, mu, sigma) {
+
+			print(stat_normal(x, mu, sigma));
+		};
+
+		x     := 2;
+		mu	  := 3;
+		sigma := 9;
+
+		statNormal(x, mu, sigma);
+		\end{lstlisting}
+	\end{center}
