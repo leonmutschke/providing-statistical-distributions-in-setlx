@@ -2,13 +2,25 @@
 
 \chapter{Testing the Implementation}
 
-	This chapter describes the process of testing the implementation. As defined in the task, the values of the statistical distributions implemented in \setlx\ should be compared with the values computed in the programming language R or Python. The programming language Python was chosen due to existing knowledge. The \setlx\ interpreter possesses two special folders for testing. These folders are called \lstinline{example_SetlX_code} and \lstinline{integrationTests}. The first one contains example programs written in the \setlx\ language with the purpose to test the interpreter and demonstrate some of its functions. The second one contains some very simple \setlx\ code examples. These examples are used to test specific features for regressions. A script named \lstinline{runIntegrationTests} can be executed to test these tests.
+	%As defined in the task, the values of the statistical distributions implemented in \setlx\ should be compared with the values computed in the programming language R or Python. The programming language Python was chosen due to existing knowledge. 
 
-	To test all examples from both folders, another script named \lstinline{test_all_examples} can be executed. The script will then first run the integration tests and after validating these tests, the script will check, inside the \lstinline{example_SetlX_code} folder, for files which ends in \lstinline{.stlx}, which will then be executed, if there is also another file with the same basename, but ending in \lstinline{.stlx.reference}. The \lstinline{.stlx} files contain a normal \setlx\ program, while the corresponding \lstinline{.stlx.reference} files only contain the solution of the \setlx\ program. For all \setlx files, the script compares the output of the execution with the \lstinline{.stlx.reference} files using \lstinline{diff}. If the result of diff is empty, the output matches the solution, and the next source file is executed. If it does not match, the script will stop and the result needs to be analyzed.
+	As defined in the task, the values of the statistical distributions implemented in \setlx\ should be tested. Testing should be done in two different ways - regression tests and integration tests. Both tests are described in the sections below.
 
-	\section{\setlx\ Example Code}
+	 
 
-	The idea was to create new tests files for all the implemented statistical distributions. Therefore the structure of \lstinline{example_SetlX_code} was analyzed. For each extension, e.g. for the plotting extension, there exists one folder containing all test files and reference files. Therefore it was decided to create a new folder named \lstinline{stat_test_code}, so that the new folder structure of \lstinline{example_SetlX_code} looks like the following:
+	 %In addition, the values computed by \setlx\ should be compared with values from the programming language Python or R.
+
+	%These two folders within the \setlx\ interpreter are called \lstinline{example_SetlX_code} and \lstinline{integrationTests}. The first one contains example programs written in the \setlx\ language with the purpose to test the interpreter and demonstrate some of its functions. The second one contains some very simple \setlx\ code examples. These examples are used to test specific features for regressions. A script named \lstinline{runIntegrationTests} can be executed to test these tests. 
+
+	%To test all examples from both folders, another script named \lstinline{test_all_examples} can be executed. 
+
+\section{Regression Tests}
+
+	The \setlx\ interpreter itself has two special test folders, one for regression tests (\lstinline{example_SetlX_code}) and one for integration tests (\lstinline{integrationTests}), containing code of all kinds of tests. Regression tests basically check that everything still works the same. This is especially very important after changes have been done.
+
+	To test all regression tests within this folder, a script named \lstinline{test_all_examples} needs to be executed. The script will first run all integration tests and after validating these tests, the script will check the regression tests, by searching for files that end in \lstinline{.stlx} and files that have the same basename, but end in \lstinline{.stlx.reference}. Once both files are found, the \lstinline{.stlx} file will be executed and the result will be compared with the corresponding \lstinline{.stlx.reference} file, that definitely contains the solution of the \setlx\ program. For the comparison \lstinline{diff} is used. If the result matches the solution, the diff needs to be empty. If so, the next source file will be executed. If not, the script will stop and the result needs to be analyzed.
+
+	The idea was to expand this scheme for the tests of the implemented statistical distributions. Since each asset has its own test folder, it was decided to create a new folder named \lstinline{stat_test_code}, which would then contain all test and reference files. The resulting folder structure of \lstinline{example_SetlX_code} looks like the following:
 	
 	\begin{center}
 		\begin{lstlisting}[caption=Folder Structure example\_SetlX\_code, label=lis:structureExample]
@@ -24,7 +36,7 @@
 		\end{lstlisting}
 	\end{center}
 
-	A test and a reference file were created for all 24 distributions. All test files follow the same pattern. The pattern is shown in the following listing.
+	In total 24 statistical distributions were implemented. For each function, a test and a reference file were created, so that there are 48 files in total. All test files follow the same pattern, which is shown in the following listing. The reference files only contain the solution of the program.
 
 	\begin{center}
 		\begin{lstlisting}[caption=Test File Example, language=setlx, label=lis:exampleCode]
@@ -43,3 +55,4 @@
 		\end{lstlisting}
 	\end{center}
 
+\section{Integration Tests}
