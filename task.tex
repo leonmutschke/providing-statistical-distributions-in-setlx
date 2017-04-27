@@ -1,0 +1,107 @@
+%!TEX root = ./seminarpaper.tex
+
+\chapter*{The Task}
+
+	The task was to implement certain statistical distributions in \setlx. These statistical distributions are needed in order to use \setlx\ in machine learning. There are several libraries, which provide implementations of the most used distribution functions. There is no requirement on what library should be used. However, the \href{http://commons.apache.org/proper/commons-math/index.html}{Apache commons math library} was recommended, since it provides all statistical distributions that are in widespread use. The functions which should be implemented are listed in the following.
+
+	\begin{enumerate}
+		\item \texttt{stat\_normal(x, mu, sigma)}
+
+			This function computes the normal distribution with mean \texttt{mu} and standard deviation
+			\texttt{sigma}.  It is defined as follows:
+			\\[0.2cm]
+			\hspace*{1.3cm}
+			$\ds \texttt{stat\_normal}(x, \mu, \sigma) :=
+			\frac{1}{\sigma \cdot \sqrt{2 \cdot \pi}} \cdot \exp\left(-\frac{(x-\mu)^2}{2 \cdot \sigma^2}\right)
+			$.
+		\item \texttt{stat\_normalCDF(x, mu, sigma)}
+
+			This function computes the cumulative normal distribution with mean \texttt{mu} and standard deviation
+			\texttt{sigma}.  It is defined as follows:
+			\\[0.2cm]
+			\hspace*{1.3cm}
+			$\ds \texttt{stat\_normalCDF}(x, \mu, \sigma) :=
+			\frac{1}{\sigma \cdot \sqrt{2 \cdot \pi}} \cdot 
+			\int\limits_{-\infty}^x \exp\left(-\frac{(t-\mu)^2}{2 \cdot \sigma^2}\right) \mathrm{d}x
+			$.
+		\item \texttt{stat\_chiSquared(x, k)}
+		 
+			This function computes the
+			\href{https://en.wikipedia.org/wiki/Chi-squared_distribution}{$\chi^2$-distribution}
+			with \texttt{k} degrees of freedom where \texttt{k} is a natural number and $\texttt{x} > 0$.
+			This distribution is defined as follows:
+			\\[0.2cm]
+			\hspace*{1.3cm}
+			$\ds \texttt{stat\_chiSquared}(x, k) :=
+			\frac{1}{2^{k/2} \cdot \Gamma\bigl(\frac{k}{2}\bigr)} \cdot x^{k/2 - 1} \cdot \exp\left(-\frac{x}{2}\right)
+			$.
+			\\[0.2cm]
+			Here, $k$ is a natural number and $\Gamma$ denotes the \href{https://en.wikipedia.org/wiki/Gamma_function}{Gamma function}.
+			This function is defined as follows:
+			\\[0.2cm]
+			\hspace*{1.3cm}
+			$\ds \Gamma(x) := \int\limits_0^{\infty} t^{x-1} \cdot \exp(-t)\, \mathrm{d}t$.
+		\item \texttt{stat\_chiSquaredCDF(x, k)}
+		 
+			This function computes the cumulative
+			\href{https://en.wikipedia.org/wiki/Chi-squared_distribution}{$\chi^2$-distribution}
+			with \texttt{k} degrees of freedom.  The cumulative $\chi^2$-distribution is defined as follows:
+			\\[0.2cm]
+			\hspace*{1.3cm}
+			$\ds \texttt{stat\_chiSquaredCDF}(x, k) :=
+			\frac{1}{2^{\frac{k}{2}} \cdot \Gamma\bigl(\frac{k}{2}\bigr)} \cdot 
+			\int\limits_{0}^x t^{\frac{k}{2} - 1} \cdot \exp\left(-\frac{t}{2}\right) \mathrm{d}x
+			$.
+		\item \texttt{stat\_student(x, nu)}
+
+			This function computes the 
+			\href{https://en.wikipedia.org/wiki/Student%27s_t-distribution}{Student's t-distribution}
+			for \texttt{x} with \texttt{nu} degrees of freedom.   This function is defined as follows:
+			\\[0.2cm]
+			\hspace*{1.3cm}
+			$\ds \texttt{stat\_student}(x, \nu) := \frac{1}{\sqrt{\nu\cdot\pi}} \cdot
+			\frac{\Gamma\bigl(\frac{\nu+1}{2}\bigr)}{\Gamma\bigl(\frac{\nu}{2}\bigr)} \cdot
+			\left(1 + \frac{x^2}{\nu}\right)^{-\frac{\nu+1}{2}}
+			$.
+			\\[0.2cm]
+			Here, $\nu$ is a natural number.
+		\item \texttt{stat\_studentCDF(x, nu)}
+
+			This function computes the cumulative 
+			\href{https://en.wikipedia.org/wiki/Student%27s_t-distribution}{Student's t-distribution}
+			for \texttt{x} with \texttt{nu} degrees of freedom.   This function is defined as follows:
+			\\[0.2cm]
+			\hspace*{1.3cm}
+			$\ds \texttt{stat\_studentCDF}(x, \nu) := \frac{1}{\sqrt{\nu\cdot\pi}} \cdot
+			\frac{\Gamma\bigl(\frac{\nu+1}{2}\bigr)}{\Gamma\bigl(\frac{\nu}{2}\bigr)} \cdot
+			\int\limits_{-\infty}^{x} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu+1}{2}} \mathrm{d} t
+			$.
+		\item \texttt{stat\_fisher(x, a, b)}
+
+			This function computes the 
+			\href{https://en.wikipedia.org/wiki/F-distribution}{Fisher-Snedecor distribution}.
+			It is defined as follows:
+			\\[0.2cm]
+			\hspace*{1.3cm}
+			$\ds \mathtt{stat\_fisher}(x, n, m) :=
+			\frac{\Gamma\bigl(\frac{m+n}{2}\bigr)}{\,\Gamma\bigl(\frac{m}{2}\bigr) \cdot \Gamma\bigl(\frac{n}{2}\bigr)\,} 
+			 \cdot m^{m/2} \cdot n^{n/2} \cdot \frac{x^{n/2-1}}{(m + n \cdot x)^{(m+n)/2}}
+			$.
+			\\[0.2cm]
+			This function is only defined for $x \geq 0$.  $m$ and $n$ are integers.
+		\item \texttt{stat\_fisherCDF(x, a, b)}
+
+			This function computes the cumulative
+			\href{https://en.wikipedia.org/wiki/F-distribution}{Fisher-Snedecor distribution}.
+			It is defined as follows:
+			\\[0.2cm]
+			\hspace*{1.3cm}
+			$\ds \mathtt{stat\_fisherCDF}(x, n, m) :=
+			\frac{\Gamma\bigl(\frac{m+n}{2}\bigr)}{\,\Gamma\bigl(\frac{m}{2}\bigr) \cdot \Gamma\bigl(\frac{n}{2}\bigr)\,} 
+			 \cdot m^{m/2} \cdot n^{n/2} \cdot \int\limits_{0}^x \frac{t^{n/2-1}}{(m + n \cdot t)^{(m+n)/2}} \,\mathrm{d}t
+			$.
+			\\[0.2cm]
+			This function is only defined for $x \geq 0$. $m$ and $n$ are integers.
+		\end{enumerate}
+
+		Additionally to the functions listed above, other statistical distributions should be added, if the time permits it. The implementation should be tested by comparing the values from the functions in \setlx\ with values computed in the programming language \href{https://en.wikipedia.org/wiki/R_(programming_language)}{R} or with the Python library \href{https://www.scipy.org}{SciPy}. For every function that is implemented, a program should be written that tests this function and that compares the results with precomputed values. These programs should be integrated into the \setlx\ test framework. In the end, the structure of the code should be documented in a clear way.

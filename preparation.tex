@@ -1,0 +1,30 @@
+%!TEX root = ./seminarpaper.tex
+
+
+\chapter{Development Preparations}
+
+Prior to any development process comes preparing the general infrastructure. In case of adding new assets to the \setlx\ Interpreter, the given structure can be easily extended to add new functions. The most recent version of the complete \setlx\ Source-Code is available at \href{https://github.com/herrmanntom/setlX}{https://github.com/herrmanntom/setlX} and can be cloned via \lstinline{Git}.
+
+\section{Folder Structure}
+
+The most important part for developing new assets is the \lstinline{interpreter} folder inside the base directory of \setlx. In there, there are, as of now, four folders relevant for development:
+
+\begin{itemize}
+	\item \lstinline{core}
+	\item \lstinline{pc-ui}
+	\item \lstinline{gfx_addon}
+	\item \lstinline{plot_addon}
+\end{itemize}
+
+From this, the general idea of extending the structure is already visible: Each set of new functions is contained in a new folder on this level, following the naming pattern of \enquote{keyword for what kind of functions are contained in this folder}\lstinline{_addon}. Inside these folders, the further structure is just a basic java folder structure that can mostly be copied from the already existing \lstinline{*_addon} folders. So in case of the task of the authors the folderstructure \lstinline{stat_addon/src/main/java/org/randoom/setlx/functions} was created.
+
+\section{Tools}
+
+To successfully build and execute the \setlx\ Interpreter, the following tools are necessary:
+
+\begin{itemize}
+ \item JDK (Java Development Kit, v1.7+)
+ \item maven (v3.1+)
+\end{itemize}
+
+If everything was installed correctly, the \setlx\ Distribution can be built by executing \lstinline{createDistributions} in the base \setlx\ directory (on UNIX-like systems). The \lstinline{createDistributions} script can be executed with the flag \lstinline{noTests} to skip the execution of all test files, which can be quite time-consuming. If the script executes successfully, multiple \lstinline{.zip} archives are created. To enter the \setlx\ Interpreter, the \lstinline{*.binary_only.zip} archive has to be copied/moved to a chosen location and unzipped. The interpreter is then accessible by executing the \setlx\ script inside the \lstinline{interpreter} folder of the unzipped archive.
