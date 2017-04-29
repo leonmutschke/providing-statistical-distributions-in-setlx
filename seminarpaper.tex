@@ -15,6 +15,7 @@
 \usepackage{xfrac}
 \usepackage{csquotes}
 \usepackage{listings, lstautogobble}
+\usepackage[printonlyused]{acronym}
 
 
 \usepackage{hyperref}
@@ -37,9 +38,19 @@
 \definecolor{editorGray}{rgb}{0.95, 0.95, 0.97}
 \definecolor{editorBlue}{rgb}{0.00, 0.56, 1.00}
 \definecolor{editorGreen}{rgb}{0.17, 0.66, 0.10}
+\definecolor{darkgray}{rgb}{0.13, 0.13, 0.13}
 
-\lstdefinelanguage{javascript}{
-  morekeywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+
+\lstdefinelanguage{bash}{
+  morekeywords={sudo, apt-get, echo, source, mkvirtualenv},
+  morecomment=[s]{/*}{*/},
+  morecomment=[l]\#,
+  morestring=[b]",
+  morestring=[b]'
+}
+
+\lstdefinelanguage{setlx}{
+  morekeywords={if, else, for, while, try, catchLng, catchUsr, catch, check, afterBacktrack, backtrack, break, continue, exit, return, assert, class, static, switch, case, default, match, scan, using, regex, as, procedure, cachedProcedure, closure, rw, forall, exists, notin, in},
   morecomment=[s]{/*}{*/},
   morecomment=[l]//,
   morestring=[b]",
@@ -227,6 +238,8 @@
 \include{preparation}
 \include{implementation}
 \include{testing}
+\include{abbreviations}
+\lstlistoflistings
 
 
 
