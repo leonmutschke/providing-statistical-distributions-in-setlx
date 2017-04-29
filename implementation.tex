@@ -1,0 +1,71 @@
+%!TEX root = ./seminarpaper.tex
+
+
+\chapter{Implementation}
+
+The general idea is that every function gets its own java class inside the \lstinline{functions} folder of the newly created folder structure. For the authors this meant implementing one java class for every statistical distribution function. However, the basic concept is the same for any new function. 
+
+\section{Basic Concept}
+
+First of all, the name of the java class has to follow a certain naming pattern to be recognized as a function. The pattern consists of the following elements:
+
+\begin{itemize}
+	\item \lstinline{PD_}
+	\item \lstinline{name of the function which will be used to call it inside the interpreter}
+	\item \lstinline{.java}
+\end{itemize}
+
+So the classname of the function to compute the normal distribution for example would be \lstinline{PD_stat_normal.java}. After creating the file, the next important step is to choose the correct class to extend. For the class to be recognized as a function, it \textbf{must} extend \lstinline{PreDefinedProcedure}, which is basically the template for any function that should later be accessible from within the interpreter. In case of the normal distribution function, the first line of the file should then look like this:
+
+\begin{center}
+	\begin{lstlisting}[caption={Class Definition}, language={java}, label=lis:exampleCode]
+		public class PD_stat_normal extends PreDefinedProcedure {
+	\end{lstlisting}
+\end{center}
+
+Some functions may require certain parameters for their execution. These parameters are defined directly after the class definition as variables of the predefined type \lstinline{ParameterDefinition}. They are created by using the \lstinline{createParameter()} method of the base class \lstinline{PreDefinedProcedure}. The only parameter this method takes is a string which determines the name of the variable to be created. The normal distribution function for example requires three parameters, \textit{x}, $\mu$ and $\sigma$. The parameter definitions in the corresponding file would thus look like this:
+
+\begin{center}
+	\begin{lstlisting}[caption={Parameter Definition}, language={java}, label=lis:exampleCode]
+		private final static ParameterDefinition X     = createParameter("x");
+		private final static ParameterDefinition MU    = createParameter("mu");
+		private final static ParameterDefinition SIGMA = createParameter("sigma");
+	\end{lstlisting}
+\end{center}
+
+To finish up the formal definition of a function, a default constructor is needed which is then used to create an instance of the class as an instance of \lstinline{PreDefinedProcedure} with the name \lstinline{DEFINITION}. Shown below is the case of the normal distribution function:
+
+\begin{center}
+	\begin{lstlisting}[caption={Constructor and Function Definition}, language={java}, label=lis:exampleCode]
+		/** Definition of the PreDefinedProcedure 'stat_normal' */
+		public final static PreDefinedProcedure DEFINITION = new PD_stat_normal();
+
+		private PD_stat_normal() {
+			super();
+			addParameter(X);
+			addParameter(MU);
+			addParameter(SIGMA);
+		}
+	\end{lstlisting}
+\end{center}
+
+Up till this point, everything that was done can basically be done for any new function by just changing the name and the required parameters. The thing that sets every function apart is the \lstinline{execute} method that needs to be overridden when extending \lstinline{PreDefinedProcedure}. This method is called when the function gets called as a \setlx\ function from within the interpreter. It takes the parameters that were defined for the function, performs some computation with these parameters and returns the result which is then shown in the interpreter.
+
+\section{Computation}
+
+Any parameter that a function gets called with is given to the \lstinline{execute} method within an array called \lstinline{args}. From this array every parameter can be retreived by calling \lstinline{args.get(NAME)} with \lstinline{NAME} being the names of the \lstinline{ParameterDefinition} variables that were defined for the function. Since the \lstinline{execute} 
+method bears almost no common concepts between different kinds of functions but shows high similarities across all statistical distribution functions that were implemented by the authors, the normal distribution function will be used as an example in this chapter to show the work of the authors and provide a basic understanding of what the \lstinline{execute} method is supposed to do and how it could be implemented for new functions. To start, the method definition and the retrieval of all parameters for the normal distribution function can be seen below:
+
+\begin{center}
+	\begin{lstlisting}[caption={execute method and parameter retrieval}, language={java}, label=lis:exampleCode]
+		/** Definition of the PreDefinedProcedure 'stat_normal' */
+		@Override
+		public Value execute(State state, HashMap<ParameterDefinition, Value> args) throws SetlException {
+		
+        final Value x     = args.get(X);
+        final Value mu    = args.get(MU);
+        final Value sigma = args.get(SIGMA);
+	\end{lstlisting}
+\end{center}
+
+  
