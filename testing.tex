@@ -91,7 +91,7 @@
 
 	In addition to the integration and the regression tests, the computed \setlx\ values should also be compared with values computed with the programming language R or Python. It was decided to test with Python because of existing knowledge. The open-source library \ac{SciPy} was used. \ac{SciPy} provides many user-friendly and efficient numerical routines. More about \ac{SciPy} can be read \href{https://www.scipy.org/}{here}.
 
-	\ac{SciPy} is installed very easily. It basically just needs \lstinline{Python} and \lstinline{Pip}, a package from Python. However, it is advisable to install \ac{SciPy} in a virtual environment, an isolated Python environment, just for this project. The following commands need to be executed on Debian-based operating systems to install everything needed.
+	\ac{SciPy} is installed very easily. It basically just needs \lstinline{Python}, \lstinline{Pip}, a package manager from Python, and the \lstinline{SciPy} package itself. However, it is advisable to install \ac{SciPy} in a virtual environment, an isolated Python environment, just for this project. The following commands were executed to install everything needed.
 
 	\begin{center}
 		\begin{lstlisting}[caption={Install Virtual Environment and SciPy}, language={bash}, label={lis:scipy}]
@@ -107,3 +107,7 @@
 			pip install scipy
 		\end{lstlisting}
 	\end{center}
+
+	The question was were to save the Python test files. The first idea was to put them into the same folder, were the \setlx\ test files are located. But since this folder only contains tests written in \setlx, it was decided to create a new folder, just for the \enquote{stat} tests. This folder was named \lstinline{example_SetlX_stat_code}. Inside this folder another folder named \lstinline{stat_python_code} was created. In future, if needed, there can be added more folders easily for other tests with other programming languages.
+
+	Once \ac{SciPy} was installed, the test files were created. For each function, there exists one \lstinline{.py} file with the code and one \lstinline{.py.reference} file for the solution - like the tests for \setlx.
