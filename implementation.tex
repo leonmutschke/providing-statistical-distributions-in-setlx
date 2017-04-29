@@ -1,0 +1,18 @@
+%!TEX root = ./seminarpaper.tex
+
+
+\chapter{Implementation}
+
+The general idea is that every function gets its own java class inside the \lstinline{functions} folder of the newly created folder structure. For the authors this meant implementing one java class for every statistical distribution function. However, the basic concept is the same for any new function. 
+
+\section{Basic Concept}
+
+First of all, the name of the java class has to follow a certain naming pattern to be recognized as a function. The pattern consists of the following elements:
+
+\begin{itemize}
+	\item \lstinline{PD_}
+	\item \lstinline{name of the function which will be used to call it inside the interpreter}
+	\item \lstinline{.java}
+\end{itemize}
+
+So the classname of the function to compute the normal distribution for example would be \lstinline{PD_stat_normal.java}. After creating the file, the next important step is to choose the correct class to extend. For the class to be recognized as a function, it \textbf{must} extend \lstinline{PreDefinedProcedure}, which is basically the template for any function that should later be accessible from within the interpreter.
