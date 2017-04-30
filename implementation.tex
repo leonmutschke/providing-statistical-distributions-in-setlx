@@ -15,7 +15,7 @@ First of all, the name of the java class has to follow a certain naming pattern 
 	\item \lstinline{.java}
 \end{itemize}
 
-So the classname of the function to compute the normal distribution for example would be \lstinline{PD_stat_normal.java}. After creating the file, the next important step is to choose the correct class to extend. For the class to be recognized as a function, it \textbf{must} extend \lstinline{PreDefinedProcedure}, which is basically the template for any function that should later be accessible from within the interpreter. In case of the normal distribution function, the first line of the file should then look like this:
+So, \lstinline{PD_stat_normal.java} would be the classname of the function to compute the normal distribution . After creating the file, the next important step is to choose the correct class to extend. For the class to be recognized as a function, it \textbf{must} extend \lstinline{PreDefinedProcedure}, which is basically the template for any function that should later be accessible from within the interpreter. In case of the normal distribution function, the first line of the file should then look like this:
 
 \begin{center}
 	\begin{lstlisting}[caption={Class Definition}, language={java}, label=lis:exampleCode]
