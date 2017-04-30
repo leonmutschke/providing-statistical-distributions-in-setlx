@@ -15,7 +15,7 @@ First of all, the name of the java class has to follow a certain naming pattern 
 	\item \lstinline{.java}
 \end{itemize}
 
-So, \lstinline{PD_stat_normal.java} would be the classname of the function to compute the normal distribution . After creating the file, the next important step is to choose the correct class to extend. For the class to be recognized as a function, it \textbf{must} extend \lstinline{PreDefinedProcedure}, which is basically the template for any function that should later be accessible from within the interpreter. In case of the normal distribution function, the first line of the file should then look like this:
+The function to compute the normal distribution for example would thus be stored in a file called \lstinline{PD_stat_normal.java}. After creating the file, the next important step is to choose the correct class to extend. For the class to be recognized as a function, it \textbf{must} extend \lstinline{PreDefinedProcedure}, which is basically the template for any function that should later be accessible from within the interpreter. In case of the normal distribution function, the first line of the file should then look like this:
 
 \begin{center}
 	\begin{lstlisting}[caption={Class Definition}, language={java}, label=lis:exampleCode]
@@ -54,7 +54,7 @@ Up till this point, everything that was done can basically be done for any new f
 \section{Computation}
 
 Any parameter that a function gets called with is given to the \lstinline{execute} method within an array called \lstinline{args}. From this array every parameter can be retreived by calling \lstinline{args.get(NAME)} with \lstinline{NAME} being the names of the \lstinline{ParameterDefinition} variables that were defined for the function. Since the \lstinline{execute} 
-method bears almost no common concepts between different kinds of functions but shows high similarities across all statistical distribution functions that were implemented by the authors, the normal distribution function will be used as an example in this chapter to show the work of the authors and provide a basic understanding of what the \lstinline{execute} method is supposed to do and how it could be implemented for new functions. To start, the method definition and the retrieval of all parameters for the normal distribution function can be seen below:
+method bears almost no common concepts between different kinds of functions but shows high similarities across all statistical distribution functions that were implemented by the authors, the normal distribution function will be used as an example in this chapter to show the work of the authors and provide a basic understanding of what the \lstinline{execute} method is supposed to do and how it could be implemented for new functions. The purpose of this function is to compute the propability density at some point \textit{x} with given parameters $\mu$ and $\sigma$. To start, the method definition and the retrieval of all parameters for the normal distribution function can be seen below:
 
 \begin{center}
 	\begin{lstlisting}[caption={execute method and parameter retrieval}, language={java}, label=lis:exampleCode]
@@ -68,4 +68,48 @@ method bears almost no common concepts between different kinds of functions but 
 	\end{lstlisting}
 \end{center}
 
-  
+ Note that at this point of execution, every parameter is of the abstract type \lstinline{Value}. One characteristic of statistical distribution functions is that in many cases the parameters have to fit certain criteria for the function to execute correctly. The most important one, which is applicable to all distribution functions, is that only numbers are allowed as parameters. Special to the normal distribution function is the requirement that the parameter $\sigma$ is not zero. To check if the parameters that the function was called with fit this criteria, a utility class called \lstinline{Checker} was implemented. This class is stored in the folder \lstinline{utility}, which was created on the level of the \lstinline{functions} folder and contains many different \lstinline{check} methods for any criteria that a distribution function may demand. Shown below are the implementations of the methods \lstinline{checkIfNumber} and \lstinline{checkIfNumberAndNotZero}:
+ 
+ \newpage
+ \begin{center}
+	\begin{lstlisting}[caption={Checker methods}, language={java}, label=lis:exampleCode]
+		/** Checks if given values are numbers and if not, throws an exception */
+		public static boolean checkIfNumber(State state, Value... values) throws IncompatibleTypeException {
+			for (Value value : values) {
+				if (! (value.isRational() == SetlBoolean.TRUE || value.isDouble() == SetlBoolean.TRUE)) {
+					throw new IncompatibleTypeException(
+							"Input-argument '" + value.toString(state) + "' is not a number."
+					);
+				}
+			}
+			return true;
+		}
+
+		/** Checks if given values are numbers and different to zero and if not, throws an exception */
+		public static boolean checkIfNumberAndNotZero(State state, String parameterName, Value... values) throws SetlException{
+			for (Value value: values) {
+				if (! (value.isRational() == SetlBoolean.TRUE || value.isDouble() == SetlBoolean.TRUE)) {
+					throw new IncompatibleTypeException(
+							"Input-argument '" + value.toString(state) + "' is not a number."
+					);
+				} else if (value.toJDoubleValue(state) == 0) {
+					throw new IncompatibleTypeException(
+							"The parameter '" + parameterName + "' cannot be zero."
+					);
+				}
+			}
+			return true;
+		}
+	\end{lstlisting}
+\end{center}
+
+If every given parameter was checked and none of the \lstinline{checker} methods threw an exception, the actual computation of the statistical distribution can begin. To do this computation, the authors chose the \href{http://commons.apache.org/proper/commons-math/userguide/distribution.html}{Apache Commons Math} library due to a vast number of statistical distributions being supported. To perform calculations with a certain statistical distribution, an object of that distribution has to be created via its constructor using the function-specific parameters, which would be $\mu$ and $\sigma$ in case of the normal distribution. On this object the methods \lstinline{density(x)} and \lstinline{cumulativePropability(x)} can be called to compute the propability density or the cumulative propability for some value \textit{x} respectively. Putting it all together, the computation of the propability density for normal distributions looks like this:
+
+\begin{center}
+	\begin{lstlisting}[caption={Checker methods}, language={java}, label=lis:exampleCode]
+		NormalDistribution nd = new NormalDistribution(mu.toJDoubleValue(state), sigma.toJDoubleValue(state));
+        return SetlDouble.valueOf(nd.density(x.toJDoubleValue(state)));
+	\end{lstlisting}
+\end{center}
+
+The method \lstinline{toJDoubleValue(state)} that can be seen in the first line of the code above, converts the parameter it is used on from the abstract type \lstinline{Value} into a primitive \lstinline{double} value. This is done because the library can of course only calculate using primitive data types. On the other hand this means that before the result can be returned, it has to be converted back into a data type that the \setlx\ interpreter understands, in this case \lstinline{SetlDouble}. This finally is what is shown in the interpreter as the result of the function.
