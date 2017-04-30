@@ -110,4 +110,13 @@
 
 	The question was were to save the Python test files. The first idea was to put them into the same folder, were the \setlx\ test files are located. But since this folder only contains tests written in \setlx, it was decided to create a new folder, just for the \enquote{stat} tests. This folder was named \lstinline{example_SetlX_stat_code}. Inside this folder another folder named \lstinline{stat_python_code} was created. In future, if needed, there can be added more folders easily for other tests with other programming languages.
 
-	Once \ac{SciPy} was installed, the test files were created. For each function, there exists one \lstinline{.py} file with the code and one \lstinline{.py.reference} file for the solution - like the tests for \setlx.
+	Once \ac{SciPy} was installed, the test files were created. For each function, there exists one \lstinline{.py} file with the code and one \lstinline{.py.reference} file for the solution - like the tests for \setlx. The listing below shows the test for the normal distribution. Each test file is structured in the same way.
+
+	\begin{center}
+		\begin{lstlisting}[caption={Install Virtual Environment and SciPy}, language={Python}, label={lis:pythontest}]
+			from scipy.stats import norm
+			print(norm.pdf(2,3,9))
+		\end{lstlisting}
+	\end{center}
+
+	In line one, the used distribution (\lstinline{norm}) is loaded from the module \ac{SciPy}. Line two calls the \ac{PDF} of the normal distribution and prints the result. The given parameters equal the parameters used in the \setlx\ tests. Calling the \ac{CDF} of any of these distributions works the same way.
