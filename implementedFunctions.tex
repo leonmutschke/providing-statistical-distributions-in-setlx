@@ -74,5 +74,23 @@
 	\section{Pareto Distribution}
 
 	\section{Student-T Distribution}
+	
+		The student distribution has one parameter \nu\ (degrees of freedom) $>$ 0. The \ac{PDF} of the student distribution is defined as
+		\\
+		$$f(t) = \frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\nu\pi}\,\Gamma(\frac{\nu}{2})} \left(1+\frac{t^2}{\nu} \right)^{\!-\frac{\nu+1}{2}}$$
+		\\
+		where $\Gamma$ is the gamma function. The \ac{CDF} of the student distribution can be written in terms of $I$, the regularized incomplete beta function. For t > 0
+		\\
+		$$F(t) = \int_{-\infty}^t f(u)\,du = 1 - \tfrac{1}{2} I_{x(t)}\left(\tfrac{\nu}{2}, \tfrac{1}{2}\right)$$
+		\\
+		where $$x(t) = \frac{\nu}{{t^2+\nu}}$$
 
 	\section{Weibull Distribution}
+	
+		The weibull distribution has two parameters $k$ (shape) $>$ 0 and $\gamma$ (scale) $>$ 0 and is defined for \textit{x} \geq\ 0. The \ac{PDF} of the weibull distribution is defined as
+		\\
+		$$f(x) = \left(\frac{k}{\gamma}\right)\left(\frac{x}{\gamma}\right)^{k-1}e^{-\left(\frac{x}{\gamma}\right)^{k}} \hspace{.3in} x \geq 0; k,\gamma > 0\\$$
+		\\
+		The \ac{CDF} of the weibull distribution is defined as
+		\\
+		$$F(x) = 1 - e^{-(x^{\gamma})} \hspace{.3in} x \geq 0; \gamma > 0$$
