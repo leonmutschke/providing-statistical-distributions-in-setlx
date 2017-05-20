@@ -58,12 +58,44 @@
 	\section{Gamma Distribution}
 
 	\section{Levy Distribution}
+	
+		The levy distribution has two parameters $\mu$ and $c$ (scale) $>$ 0 and is defined for \textit{x} \geq\ \mu. The \ac{PDF} of the levy distribution is defined as
+		\\
+		$$f(x;\mu,c)=\sqrt{\frac{c}{2\pi}}~~\frac{e^{ -\frac{c}{2(x-\mu)}}} {(x-\mu)^{3/2}}$$
+		\\
+		The \ac{CDF} of the levy distribution is defined as
+		\\
+		$$F(x;\mu,c)=\textrm{erfc}\left(\sqrt{\frac{c}{2(x-\mu)}}\right)$$
 
 	\section{Log-Normal Distribution}
+	
+		The log-normal distribution has two parameters $\mu$ (mean) and $\sigma$ (standard deviation) $>$ 0 and is defined for \textit{x} \geq\ 0. The \ac{PDF} of the log-normal distribution is defined as
+		\\
+		$$f_X(x) = \frac 1 x \cdot \frac 1 {\sigma\sqrt{2\pi\,}} \exp\left( -\frac{(\ln x-\mu)^2}{2\sigma^2} \right)$$
+		\\
+		The \ac{CDF} of the log-normal distribution is defined as
+		\\
+		$$F_X(x) = \Phi\left( \frac{(\ln x) - \mu} \sigma \right)$$
 
 	\section{Normal Distribution}
+	
+		The normal distribution has two parameters $\mu$ (mean) and $\sigma$ (standard deviation) $>$ 0. The \ac{PDF} of the normal distribution is defined as
+		\\
+		$$f(x \mid \mu, \sigma^2) =\frac 1 \sigma \varphi\left(\frac{x-\mu} \sigma \right)$$
+		\\
+		The \ac{CDF} of the normal distribution is defined as
+		\\
+		$$\Phi(x) = \frac 1 {\sqrt{2\pi}} \int_{-\infty}^x e^{-t^2/2}$$
 
 	\section{Pareto Distribution}
+	
+		The pareto distribution has two parameters $\alpha$ (shape) $>$ 0 and $x_\mathrm{m}$ (scale) $>$ 0 and is defined for \textit{x} \geq\ $x_\mathrm{m}$. The \ac{PDF} of the pareto distribution is defined as
+		\\
+		$$f_X(x)= \begin{cases} \frac{\alpha x_\mathrm{m}^\alpha}{x^{\alpha+1}} & x \ge x_\mathrm{m}, \\ 0 & x < x_\mathrm{m}. \end{cases}$$
+		\\
+		The \ac{CDF} of the pareto distribution is defined as
+		\\
+		$$F_X(x) = \begin{cases}1-\left(\frac{x_\mathrm{m}}{x}\right)^\alpha & x \ge x_\mathrm{m}, \\0 & x < x_\mathrm{m}.\end{cases}$$
 
 	\section{Student-T Distribution}
 	
