@@ -12,38 +12,52 @@
 		\label{fig:OverviewProbabilityDistributions}
 	\end{figure}
 
-	\section{Beta}
+	\section{Beta Distribution}
 
 		The beta distribution has two parameters $\alpha > 0$ and $\beta > 0$ and is defined on the interval $[0,1]$. The \ac{PDF} of the beta distribution is defined as
-		\\
-		$$f(x) = \frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}  \hspace{.3in} 0 \le x \le 1; \alpha, \beta > 0$$
-		\\
+		\\[0.3cm]
+		\hspace*{1.3cm}
+		$f(x) = \frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}  \hspace{.3in} 0 \le x \le 1; \alpha, \beta > 0$
+		\\[0.3cm]		
 		with the beta function $B$ as a normalization constant to ensure that the total probability integrates to 1. The formula of the beta function is defined as
-		\\
-		$$B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$$
-		\\
+		\\[0.3cm]
+		\hspace*{1.3cm}
+		$B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$
+		\\[0.3cm]
 		where $\Gamma$ is the gamma function. The \ac{CDF} of the beta distribution is defined as
-		\\
-		$$F(x) = I_{x}(\alpha,\beta) = \frac{\int_{0}^{x}{t^{\alpha-1}(1-t)^{\beta-1}dt}}{B(\alpha,\beta)} \hspace{.2in} 0 \le x \le 1; \alpha, \beta > 0$$
+		\\[0.3cm]
+		\hspace*{1.3cm}
+		$F(x) = I_{x}(\alpha,\beta) = \frac{\int_{0}^{x}{t^{\alpha-1}(1-t)^{\beta-1}dt}}{B(\alpha,\beta)} \hspace{.3in} 0 \le x \le 1; \alpha, \beta > 0$
 
-	\section{Cauchy}
 
-	\section{ChiSquared}
+	\section{Cauchy Distribution}
 
-	\section{Exponential}
+		The Cauchy distribution has a location parameter $t$ and a scale parameter $s$ where $s > 0$. The \ac{PDF} of the distribution is defined as
+		\\[0.3cm]
+		\hspace*{1.3cm}
+		$\ds f(x) = \frac{1}{\pi} \cdot \frac{s}{s^2 + (x-t)^2} \quad \hspace{.3in} -\infty<x<\infty$
+		\\[0.3cm]
+		The \ac{CDF} is defined as 
+		\\[0.3cm]
+		\hspace*{1.3cm}
+		$\ds F(x) = \frac{1}{2} + \frac{1}{\pi} \cdot \arctan(\frac{x-t}{s})$		
 
-	\section{Fisher-Snedecor}
+	\section{ChiSquared Distribution}
 
-	\section{Gamma}
+	\section{Exponential Distribution}
 
-	\section{Levy}
+	\section{Fisher-Snedecor Distribution}
 
-	\section{Log-Normal}
+	\section{Gamma Distribution}
 
-	\section{Normal}
+	\section{Levy Distribution}
 
-	\section{Pareto}
+	\section{Log-Normal Distribution}
 
-	\section{Student-T}
+	\section{Normal Distribution}
 
-	\section{Weibull}
+	\section{Pareto Distribution}
+
+	\section{Student-T Distribution}
+
+	\section{Weibull Distribution}
