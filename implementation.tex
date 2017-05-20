@@ -18,7 +18,7 @@ First of all, the name of the java class has to follow a certain naming pattern 
 The function to compute the normal distribution for example would thus be stored in a file called \lstinline{PD_stat_normal.java}. After creating the file, the next important step is to choose the correct class to extend. For the class to be recognized as a function, it \textbf{must} extend \lstinline{PreDefinedProcedure}, which is basically the template for any function that should later be accessible from within the interpreter. In case of the normal distribution function, the first line of the file should then look like this:
 
 \begin{center}
-	\begin{lstlisting}[caption={Class Definition}, language={java}, label=lis:exampleCode]
+	\begin{lstlisting}[caption={Class Definition}, language={java}, label=lis:classDefinition]
 		public class PD_stat_normal extends PreDefinedProcedure {
 	\end{lstlisting}
 \end{center}
@@ -26,7 +26,7 @@ The function to compute the normal distribution for example would thus be stored
 Some functions may require certain parameters for their execution. These parameters are defined directly after the class definition as variables of the predefined type \lstinline{ParameterDefinition}. They are created by using the \lstinline{createParameter()} method of the base class \lstinline{PreDefinedProcedure}. The only parameter this method takes is a string which determines the name of the variable to be created. The normal distribution function for example requires three parameters, \textit{x}, $\mu$ and $\sigma$. The parameter definitions in the corresponding file would thus look like this:
 
 \begin{center}
-	\begin{lstlisting}[caption={Parameter Definition}, language={java}, label=lis:exampleCode]
+	\begin{lstlisting}[caption={Parameter Definition}, language={java}, label=lis:parameterDefinition]
 		private final static ParameterDefinition X     = createParameter("x");
 		private final static ParameterDefinition MU    = createParameter("mu");
 		private final static ParameterDefinition SIGMA = createParameter("sigma");
@@ -36,7 +36,7 @@ Some functions may require certain parameters for their execution. These paramet
 To finish up the formal definition of a function, a default constructor is needed which is then used to create an instance of the class as an instance of \lstinline{PreDefinedProcedure} with the name \lstinline{DEFINITION}. Shown below is the case of the normal distribution function:
 
 \begin{center}
-	\begin{lstlisting}[caption={Constructor and Function Definition}, language={java}, label=lis:exampleCode]
+	\begin{lstlisting}[caption={Constructor and Function Definition}, language={java}, label=lis:constructor]
 		/** Definition of the PreDefinedProcedure 'stat_normal' */
 		public final static PreDefinedProcedure DEFINITION = new PD_stat_normal();
 
@@ -57,7 +57,7 @@ Any parameter that a function gets called with is given to the \lstinline{execut
 method bears almost no common concepts between different kinds of functions but shows high similarities across all statistical distribution functions that were implemented by the authors, the normal distribution function will be used as an example in this chapter to show the work of the authors and provide a basic understanding of what the \lstinline{execute} method is supposed to do and how it could be implemented for new functions. The purpose of this function is to compute the propability density at some point \textit{x} with given parameters $\mu$ and $\sigma$. To start, the method definition and the retrieval of all parameters for the normal distribution function can be seen below:
 
 \begin{center}
-	\begin{lstlisting}[caption={execute method and parameter retrieval}, language={java}, label=lis:exampleCode]
+	\begin{lstlisting}[caption={execute method and parameter retrieval}, language={java}, label=lis:parameterRetrieval]
 		/** Definition of the PreDefinedProcedure 'stat_normal' */
 		@Override
 		public Value execute(State state, HashMap<ParameterDefinition, Value> args) throws SetlException {
@@ -72,7 +72,7 @@ method bears almost no common concepts between different kinds of functions but 
  
  \newpage
  \begin{center}
-	\begin{lstlisting}[caption={Checker methods}, language={java}, label=lis:exampleCode]
+	\begin{lstlisting}[caption={Checker methods}, language={java}, label=lis:checkerMethods]
 		/** Checks if given values are numbers and if not, throws an exception */
 		public static boolean checkIfNumber(State state, Value... values) throws IncompatibleTypeException {
 			for (Value value : values) {
@@ -106,10 +106,45 @@ method bears almost no common concepts between different kinds of functions but 
 If every given parameter was checked and none of the \lstinline{checker} methods threw an exception, the actual computation of the statistical distribution can begin. To do this computation, the authors chose the \href{http://commons.apache.org/proper/commons-math/userguide/distribution.html}{Apache Commons Math} library due to a vast number of statistical distributions being supported. To perform calculations with a certain statistical distribution, an object of that distribution has to be created via its constructor using the function-specific parameters, which would be $\mu$ and $\sigma$ in case of the normal distribution. On this object the methods \lstinline{density(x)} and \lstinline{cumulativePropability(x)} can be called to compute the propability density or the cumulative propability for some value \textit{x} respectively. Putting it all together, the computation of the propability density for normal distributions looks like this:
 
 \begin{center}
-	\begin{lstlisting}[caption={Checker methods}, language={java}, label=lis:exampleCode]
+	\begin{lstlisting}[caption={Normal Distribution propability density computation}, language={java}, label=lis:densityComputation]
 		NormalDistribution nd = new NormalDistribution(mu.toJDoubleValue(state), sigma.toJDoubleValue(state));
         return SetlDouble.valueOf(nd.density(x.toJDoubleValue(state)));
 	\end{lstlisting}
 \end{center}
 
 The method \lstinline{toJDoubleValue(state)} that can be seen in the first line of the code above, converts the parameter it is used on from the abstract type \lstinline{Value} into a primitive \lstinline{double} value. This is done because the library can of course only calculate using primitive data types. On the other hand this means that before the result can be returned, it has to be converted back into a data type that the \setlx\ interpreter understands, in this case \lstinline{SetlDouble}. This finally is what is shown in the interpreter as the result of the function.
+
+\section{Graphical Output}
+
+While working on the first few distribution functions, the authors noticed that it would be nice to have some sort of graphical representation for the output of these functions. Fortunately, an addon for \setlx\ that deals with graphical output already exists, so it was decided to use this to implement an additional function for every statistical distribution function that creates a graphical representation of the computed result. The main difference of these functions to their the non-graphical counterpart is the absence of a concrete \textit{x} - value. The idea was to show the graph of a function in a certain interval for some provided parameters. The interval of the graph is also adjustable when calling the function in \setlx. To compute this graph, the function loops over all numbers between the lower end and the upper end of the interval in a step size that can also be adjusted. In every iteration, a result is computed for the current value. The value and the result for this value are then added to a list as \textit{x} and \textit{y} coordinates which is then used to create the graph. To avoid having the user to provide the interval and the step size every time when calling the function, these parameters are only optional parameters and are defined with a default value for every function.
+
+\begin{center}
+	\begin{lstlisting}[caption={Optional Parameters for Bounds and Interval}, language={java}, label=lis:boundsInterval]
+		private final static ParameterDefinition MU          = createParameter("mu");
+		private final static ParameterDefinition SIGMA       = createParameter("sigma");
+		private final static ParameterDefinition CANVAS      = createParameter("canvas");
+		private final static ParameterDefinition LOWER_BOUND = createOptionalParameter("lowerBound", Defaults.createSetlDoubleValue(-5.0));
+		private final static ParameterDefinition INTERVAL    = createOptionalParameter("interval", Defaults.getDefaultPlotInterval());
+		private final static ParameterDefinition UPPER_BOUND = createOptionalParameter("upperBound", Defaults.createSetlDoubleValue(5.0));
+	\end{lstlisting}
+\end{center}
+
+\ref{lis:boundsInterval} shows the parameter definitions for the function \lstinline{stat_normal_plot}, which demonstrate how optional parameters are defined using the \lstinline{createOptionalParameter()} - method. Important to note here is the parameter canvas: This is part of the \lstinline{plot} - addon and represents the surface any graphical output is drawn on.
+
+\begin{center}
+	\begin{lstlisting}[caption={Computation of propability density graph for Normal Distributions}, language={java}, label=lis:densityGraph]
+		NormalDistribution nd = new NormalDistribution(mu.toJDoubleValue(state), sigma.toJDoubleValue(state));
+
+        /** The valueList is the list of every pair of coordinates [x,y] that the graph consists of.
+         *  It is filled by iteratively increasing the variable 'counter' (x), and calculating the density for every new value of 'counter' (y).
+         */
+        List<List<Double>> valueList = new ArrayList<>();
+        for (double counter = lowerBound.toJDoubleValue(state); counter < upperBound.toJDoubleValue(state); counter += interval.toJDoubleValue(state)) {
+            valueList.add(new ArrayList<Double>(Arrays.asList(counter, nd.density(counter))));
+        }
+
+        return ConnectJFreeChart.getInstance().addListGraph((Canvas) canvas, valueList, "Probability Density Function (mean: " + mu.toString() + ", standard deviation: " + sigma.toString(), Defaults.DEFAULT_COLOR_SCHEME, false);
+	\end{lstlisting}
+\end{center}
+
+Shown in \ref{lis:densityGraph} is the loop that computes the list of coordinates for the graph, using the same objects and methods that the non-graphical version of the normal distribution function. In the last line, the \lstinline{plot} - addon is then used to draw the graph on the given canvas and create a graphical output that is shown to the user.
