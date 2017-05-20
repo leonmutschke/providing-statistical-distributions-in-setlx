@@ -129,7 +129,7 @@ While working on the first few distribution functions, the authors noticed that 
 	\end{lstlisting}
 \end{center}
 
-\ref{lis:boundsInterval} shows the parameter definitions for the function \lstinline{stat_normal_plot}, which demonstrate how optional parameters are defined using the \lstinline{createOptionalParameter()} - method. Important to note here is the parameter canvas: This is part of the \lstinline{plot} - addon and represents the surface any graphical output is drawn on.
+Listing \ref{lis:boundsInterval} shows the parameter definitions for the function \lstinline{stat_normal_plot}, which demonstrate how optional parameters are defined using the \lstinline{createOptionalParameter()} - method. Important to note here is the parameter canvas: This is part of the \lstinline{plot} - addon and represents the surface any graphical output is drawn on.
 
 \begin{center}
 	\begin{lstlisting}[caption={Computation of propability density graph for Normal Distributions}, language={java}, label=lis:densityGraph]
@@ -147,4 +147,4 @@ While working on the first few distribution functions, the authors noticed that 
 	\end{lstlisting}
 \end{center}
 
-Shown in \ref{lis:densityGraph} is the loop that computes the list of coordinates for the graph, using the same objects and methods that the non-graphical version of the normal distribution function. In the last line, the \lstinline{plot} - addon is then used to draw the graph on the given canvas and create a graphical output that is shown to the user.
+Shown in listing \ref{lis:densityGraph} is the loop that computes the list of coordinates for the graph, using the same objects and methods that the non-graphical version of the normal distribution function. In the last line, the \lstinline{plot} - addon is then used to draw the graph on the given canvas and create a graphical output that is shown to the user.
