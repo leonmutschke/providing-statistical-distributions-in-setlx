@@ -15,34 +15,41 @@
 	\section{Beta Distribution}
 
 		The beta distribution has two parameters $\alpha > 0$ and $\beta > 0$ and is defined on the interval $[0,1]$. The \ac{PDF} of the beta distribution is defined as
-		\\[0.3cm]
-		\hspace*{1.3cm}
-		$f(x) = \frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}  \hspace{.3in} 0 \le x \le 1; \alpha, \beta > 0$
+
+		$$f(x) = \frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}  \hspace{.3in} 0 \le x \le 1; \alpha, \beta > 0$$
 		\\[0.3cm]		
 		with the beta function $B$ as a normalization constant to ensure that the total probability integrates to 1. The formula of the beta function is defined as
+
+		$$B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$$
 		\\[0.3cm]
-		\hspace*{1.3cm}
-		$B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$
-		\\[0.3cm]
-		where $\Gamma$ is the gamma function. The \ac{CDF} of the beta distribution is defined as
-		\\[0.3cm]
-		\hspace*{1.3cm}
-		$F(x) = I_{x}(\alpha,\beta) = \frac{\int_{0}^{x}{t^{\alpha-1}(1-t)^{\beta-1}dt}}{B(\alpha,\beta)} \hspace{.3in} 0 \le x \le 1; \alpha, \beta > 0$
+		where $\Gamma$ denotes the gamma function. The \ac{CDF} of the beta distribution is defined as
+
+		$$F(x) = I_{x}(\alpha,\beta) = \frac{\int_{0}^{x}{t^{\alpha-1}(1-t)^{\beta-1}dt}}{B(\alpha,\beta)} \hspace{.3in} 0 \le x \le 1; \alpha, \beta > 0$$
 
 
 	\section{Cauchy Distribution}
 
 		The Cauchy distribution has a location parameter $t$ and a scale parameter $s$ where $s > 0$. The \ac{PDF} of the distribution is defined as
-		\\[0.3cm]
-		\hspace*{1.3cm}
-		$\ds f(x) = \frac{1}{\pi} \cdot \frac{s}{s^2 + (x-t)^2} \quad \hspace{.3in} -\infty<x<\infty$
+
+		$$\ds f(x) = \frac{1}{\pi} \cdot \frac{s}{s^2 + (x-t)^2} \quad \hspace{.3in} -\infty<x<\infty$$
 		\\[0.3cm]
 		The \ac{CDF} is defined as 
-		\\[0.3cm]
-		\hspace*{1.3cm}
-		$\ds F(x) = \frac{1}{2} + \frac{1}{\pi} \cdot \arctan(\frac{x-t}{s})$		
 
-	\section{ChiSquared Distribution}
+		$$\ds F(x) = \frac{1}{2} + \frac{1}{\pi} \cdot \arctan\left(\frac{x-t}{s}\right)$$		
+
+	\section{Chi-squared Distribution}
+
+		The chi-squared distribution (also $\chi^2$-distribution) has only one parameter $k$, where $k \in \mathbb{N}_{>0}$. The \ac{PDF} is defined as
+
+		$$f(x;\,k) =
+		\begin{cases}
+			\dfrac{x^{(k/2-1)} e^{-x/2}}{2^{k/2} \Gamma\left(\frac k 2 \right)},  & x > 0; \\ 0, & \text{otherwise}.
+		\end{cases}$$
+		\\[0.3cm]
+		where $\Gamma$ is the gamma function. The \ac{CDF} is defined as
+
+		$$F(x;\,k) = \frac{\gamma(\frac{k}{2},\,\frac{x}{2})}{\Gamma(\frac{k}{2})} = P\left(\frac{k}{2},\,\frac{x}{2}\right)$$
+
 
 	\section{Exponential Distribution}
 
