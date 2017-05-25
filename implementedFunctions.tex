@@ -12,7 +12,7 @@
 		\label{fig:OverviewProbabilityDistributions}
 	\end{figure}
 
-	\section{Beta Distribution}
+	\section{Beta Distribution} \label{sec:beta_distribution}
 
 		The beta distribution has two parameters $\alpha > 0$ and $\beta > 0$ and is defined on the interval $[0,1]$. The \ac{PDF} of the beta distribution is defined as
 
@@ -63,7 +63,30 @@
 
 	\section{Fisher-Snedecor Distribution} 
 
+		The Fisher-Snedecor, or F-distribution, has the two parameters $a$ and $b$, where $a,b \in \mathbb{N}_{>0}$. The \ac{PDF} is defined as
+
+		$$
+			f(x) = \frac{1}{\mathrm{B}\!\left(\frac{a}{2},\frac{b}{2}\right)} \left(\frac{a}{b}\right)^{\frac{a}{2}} x^{\frac{a}{2} - 1} \left(1+\frac{a}{b}\,x\right)^{-\frac{a+b}{2}}
+		$$
+		\\[0.3cm]
+		where $\Gamma$ denotes the gamma function.
+		The \ac{CDF} is defined as
+
+		$$F(x; a,b)=I_{\frac{a x}{a x + b}}\left (\tfrac{a}{2}, \tfrac{b}{2} \right)$$
+		\\[0.3cm]
+		where $I$ is the regularized incomplete beta function (see section \ref{sec:beta_distribution}).
+
 	\section{Gamma Distribution}
+
+		The gamma distribution has the shape and scale parameters $p$ and $b$, where $p,b > 0$. The \ac{PDF} is defined as
+
+		$$f(x;p,b) =  \frac{x^{p-1}e^{-\frac{x}{b}}}{b^p\Gamma(p)} \quad \text{ for } x > 0 \text{ and } p, b > 0.$$
+		\\[0.3cm]
+		where $\Gamma(p)$ is a complete \href{https://en.wikipedia.org/wiki/Gamma_function}{gamma function}.		The \ac{CDF} is defined as
+
+		$$F(x;p,b) = \int_0^x f(u;p,b)\,du = \frac{\gamma\left(p, \frac{x}{b}\right)}{\Gamma(p)}$$
+		\\[0.3cm]
+		where $\gamma\left(p, \frac{x}{b}\right)$ is the lower \href{https://en.wikipedia.org/wiki/Incomplete_gamma_function}{incomplete gamma function}.
 
 	\section{Levy Distribution}
 
@@ -79,7 +102,7 @@
 		\\
 		$$f(t) = \frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\nu\pi}\,\Gamma(\frac{\nu}{2})} \left(1+\frac{t^2}{\nu} \right)^{\!-\frac{\nu+1}{2}}$$
 		\\
-		where $\Gamma$ is the gamma function. The \ac{CDF} of the student distribution can be written in terms of $I$, the regularized incomplete beta function. For t > 0
+		where $\Gamma$ is the gamma function. The \ac{CDF} of the student distribution can be written in terms of $I$, the regularized incomplete beta function. For $t > 0$
 		\\
 		$$F(t) = \int_{-\infty}^t f(u)\,du = 1 - \tfrac{1}{2} I_{x(t)}\left(\tfrac{\nu}{2}, \tfrac{1}{2}\right)$$
 		\\
