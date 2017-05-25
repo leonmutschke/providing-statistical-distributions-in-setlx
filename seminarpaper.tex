@@ -186,6 +186,23 @@
 \def\pair(#1,#2){\langle #1, #2 \rangle}
 \newcommand{\myFig}[1]{Figure \ref{fig:#1} on page \pageref{fig:#1}}
 
+\newcommand{\honestyRep}%Declaration of Academic Honesty
+{
+	\newpage
+	\thispagestyle{plain}
+	\renewcommand{\abstractname}{Declaration of Academic Honesty
+}
+	\begin{abstract}
+
+		Hereby we declare that we wrote this seminar assignment on our own, not having used any additives other than declared within this document. All passages and ideas being not our own are fully and properly acknowledged.
+		\newline \newline \newline \newline
+		\begin{center}	\rule{0.8\textwidth}{0.4pt}\\ (Le\'{o}n Mutschke, Jonas Siefker) \\ Mannheim -- \today{}\end{center}
+	\end{abstract}
+	\renewcommand{\abstractname}{Abstract}
+	\clearpage
+} 
+
+
 {\theorembodyfont{\sf}
 \newtheorem{Definition}{Definition}
 \newtheorem{Theorem}[Definition]{Theorem}
@@ -231,6 +248,8 @@
 
 \begin{document}
 \maketitle
+\newpage\null\thispagestyle{empty}\newpage
+\honestyRep{}
 \include{scopePurpose}
 \include{task}
 \tableofcontents
@@ -238,8 +257,8 @@
 \include{preparation}
 \include{implementation}
 \include{implementedFunctions}
-\include{conclusion}
 \include{testing}
+\include{conclusion}
 \include{abbreviations}
 \lstlistoflistings
 
