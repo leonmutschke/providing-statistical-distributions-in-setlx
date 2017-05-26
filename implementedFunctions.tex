@@ -28,7 +28,7 @@
 
 		$$F(x) = I_{x}(\alpha,\beta) = \frac{\int_{0}^{x}{t^{\alpha-1}(1-t)^{\beta-1}dt}}{B(\alpha,\beta)} \hspace{.3in} 0 \le x \le 1; \alpha, \beta > 0$$
 		\\[0.3cm]
-		The \ac{CDF} of the Beta Distribution can now be calculated in \setlx\ by calling \lstinline{stat_betaCDF(x, alpha, beta)} or plotted on a given canvas by calling \lstinline{stat_betaCDF_plot(alpha, beta, canvas)}.
+		The \ac{CDF} of the Beta Distribution can now be calculated in \setlx\ by calling \lstinline{stat_betaCDF(x, alpha, beta)} or plotted on a given canvas by calling \lstinline{stat_betaCDF_plot(alpha, beta, canvas)}.\footnote{\url{https://en.wikipedia.org/wiki/Beta_distribution}}
 
 
 	\section{Cauchy Distribution}
@@ -43,7 +43,7 @@
 
 		$$\ds F(x) = \frac{1}{2} + \frac{1}{\pi} \cdot \arctan\left(\frac{x-t}{s}\right)$$
 		\\[0.3cm]
-		The \ac{CDF} of the Cauchy Distribution can now be calculated in \setlx\ by calling \lstinline{stat_cauchyCDF(x, t, s)} or plotted on a given canvas by calling \lstinline{stat_cauchyCDF_plot(t, s, canvas)}.
+		The \ac{CDF} of the Cauchy Distribution can now be calculated in \setlx\ by calling \lstinline{stat_cauchyCDF(x, t, s)} or plotted on a given canvas by calling \lstinline{stat_cauchyCDF_plot(t, s, canvas)}.\footnote{\url{https://en.wikipedia.org/wiki/Cauchy_distribution}}
 
 	\section{Chi-squared Distribution}
 
@@ -60,7 +60,7 @@
 
 		$$F(x;\,k) = \frac{\gamma(\frac{k}{2},\,\frac{x}{2})}{\Gamma(\frac{k}{2})} = P\left(\frac{k}{2},\,\frac{x}{2}\right)$$
 		\\[0.3cm]
-		The \ac{CDF} of the Chi-squared Distribution can now be calculated in \setlx\ by calling \lstinline{stat_chiSquaredCDF(x, k)} or plotted on a given canvas by calling \lstinline{stat_chiSquaredCDF_plot(k, canvas)}.
+		The \ac{CDF} of the Chi-squared Distribution can now be calculated in \setlx\ by calling \lstinline{stat_chiSquaredCDF(x, k)} or plotted on a given canvas by calling \lstinline{stat_chiSquaredCDF_plot(k, canvas)}.\footnote{\url{https://en.wikipedia.org/wiki/Chi-squared_distribution}}
 
 	\section{Exponential Distribution}
 
@@ -74,7 +74,7 @@
 
 		$$F(x;\lambda) = \begin{cases} 1-e^{-\lambda x} & x \ge 0 \\ 0 & x < 0. \end{cases}$$
 		\\[0.3cm]
-		The \ac{CDF} of the Exponential Distribution can now be calculated in \setlx\ by calling \lstinline{stat_exponentialCDF(x, l)} or plotted on a given canvas by calling \lstinline{stat_exponentialCDF_plot(l, canvas)}.
+		The \ac{CDF} of the Exponential Distribution can now be calculated in \setlx\ by calling \lstinline{stat_exponentialCDF(x, l)} or plotted on a given canvas by calling \lstinline{stat_exponentialCDF_plot(l, canvas)}.\footnote{\url{https://en.wikipedia.org/wiki/Exponential_distribution}}
 
 
 	\section{Fisher-Snedecor Distribution} 
@@ -91,7 +91,7 @@
 
 		$$F(x; a,b)=I_{\frac{a x}{a x + b}}\left (\tfrac{a}{2}, \tfrac{b}{2} \right)$$
 		\\[0.3cm]
-		where $I$ is the regularized incomplete beta function (see section \ref{sec:beta_distribution}). The \ac{CDF} of the F-Distribution can now be calculated in \setlx\ by calling \lstinline{stat_fisherCDF(x, a, b)} or plotted on a given canvas by calling \lstinline{stat_fisherCDF_plot(a, b, canvas)}.
+		where $I$ is the regularized incomplete beta function (see section \ref{sec:beta_distribution}). The \ac{CDF} of the F-Distribution can now be calculated in \setlx\ by calling \lstinline{stat_fisherCDF(x, a, b)} or plotted on a given canvas by calling \lstinline{stat_fisherCDF_plot(a, b, canvas)}.\footnote{\url{https://en.wikipedia.org/wiki/F-distribution}}
 
 
 	\section{Gamma Distribution}
@@ -106,7 +106,7 @@
 
 		$$F(x;p,b) = \int_0^x f(u;p,b)\,du = \frac{\gamma\left(p, \frac{x}{b}\right)}{\Gamma(p)}$$
 		\\[0.3cm]
-		where $\gamma\left(p, \frac{x}{b}\right)$ is the lower \href{https://en.wikipedia.org/wiki/Incomplete_gamma_function}{incomplete gamma function}. The \ac{CDF} of the Gamma Distribution can now be calculated in \setlx\ by calling \lstinline{stat_gammaCDF(x, p, b)} or plotted on a given canvas by calling \lstinline{stat_gammaCDF_plot(p, b, canvas)}.
+		where $\gamma\left(p, \frac{x}{b}\right)$ is the lower \href{https://en.wikipedia.org/wiki/Incomplete_gamma_function}{incomplete gamma function}. The \ac{CDF} of the Gamma Distribution can now be calculated in \setlx\ by calling \lstinline{stat_gammaCDF(x, p, b)} or plotted on a given canvas by calling \lstinline{stat_gammaCDF_plot(p, b, canvas)}.\footnote{\url{https://en.wikipedia.org/wiki/Gamma_distribution}}
 
 
 	\section{Levy Distribution}
@@ -121,7 +121,7 @@
 		\\[0.3cm]
 		$$F(x;\mu,c)=\textrm{erfc}\left(\sqrt{\frac{c}{2(x-\mu)}}\right)$$
 		\\[0.3cm]
-		The \ac{CDF} of the Levy Distribution can now be calculated in \setlx\ by calling \lstinline{stat_levyCDF(x, mu, scale)} or plotted on a given canvas by calling \lstinline{stat_levyCDF_plot(mu, scale, canvas)}.
+		The \ac{CDF} of the Levy Distribution can now be calculated in \setlx\ by calling \lstinline{stat_levyCDF(x, mu, scale)} or plotted on a given canvas by calling \lstinline{stat_levyCDF_plot(mu, scale, canvas)}.\footnote{\url{https://en.wikipedia.org/wiki/Gamma_distribution}}
 
 	\section{Log-Normal Distribution}
 	
@@ -135,7 +135,7 @@
 		\\[0.3cm]
 		$$F_X(x) = \Phi\left( \frac{(\ln x) - \mu} \sigma \right)$$
 		\\[0.3cm]
-		The \ac{CDF} of the Log-Normal Distribution can now be calculated in \setlx\ by calling \lstinline{stat_logNormalCDF(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_logNormalCDF_plot(mu, sigma, canvas)}.
+		The \ac{CDF} of the Log-Normal Distribution can now be calculated in \setlx\ by calling \lstinline{stat_logNormalCDF(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_logNormalCDF_plot(mu, sigma, canvas)}.\footnote{\url{https://en.wikipedia.org/wiki/Log-normal_distribution}}
 
 	\section{Normal Distribution}
 	
@@ -149,7 +149,7 @@
 		\\[0.3cm]
 		$$\Phi(x) = \frac 1 {\sqrt{2\pi}} \int_{-\infty}^x e^{-t^2/2}$$
 		\\[0.3cm]
-		The \ac{CDF} of the Normal Distribution can now be calculated in \setlx\ by calling \lstinline{stat_normalCDF(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_normalCDF_plot(mu, sigma, canvas)}.
+		The \ac{CDF} of the Normal Distribution can now be calculated in \setlx\ by calling \lstinline{stat_normalCDF(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_normalCDF_plot(mu, sigma, canvas)}.\footnote{\url{https://en.wikipedia.org/wiki/Normal_distribution}}
 		
 	\section{Pareto Distribution}
 	
@@ -163,7 +163,7 @@
 		\\[0.3cm]
 		$$F_X(x) = \begin{cases}1-\left(\frac{x_\mathrm{m}}{x}\right)^\alpha & x \ge x_\mathrm{m}, \\0 & x < x_\mathrm{m}.\end{cases}$$
 		\\[0.3cm]
-		The \ac{CDF} of the Pareto Distribution can now be calculated in \setlx\ by calling \lstinline{stat_paretoCDF(x, scale, shape)} or plotted on a given canvas by calling \lstinline{stat_paretoCDF_plot(scale, shape, canvas)}.
+		The \ac{CDF} of the Pareto Distribution can now be calculated in \setlx\ by calling \lstinline{stat_paretoCDF(x, scale, shape)} or plotted on a given canvas by calling \lstinline{stat_paretoCDF_plot(scale, shape, canvas)}.\footnote{\url{https://en.wikipedia.org/wiki/Pareto_distribution}}
 		
 	\section{Student-T Distribution}
 	
@@ -179,7 +179,7 @@
 		\\[0.3cm]
 		where $$x(t) = \frac{\nu}{{t^2+\nu}}$$
 		\\[0.3cm]
-		The \ac{CDF} of the Student-T Distribution can now be calculated in \setlx\ by calling \lstinline{stat_studentCDF(x, nu)} or plotted on a given canvas by calling \lstinline{stat_studentCDF_plot(nu, canvas)}.
+		The \ac{CDF} of the Student-T Distribution can now be calculated in \setlx\ by calling \lstinline{stat_studentCDF(x, nu)} or plotted on a given canvas by calling \lstinline{stat_studentCDF_plot(nu, canvas)}.\footnote{\url{https://en.wikipedia.org/wiki/Student\%27s_t-distribution}}
 		
 	\section{Weibull Distribution}
 	
@@ -193,5 +193,5 @@
 		\\[0.3cm]
 		$$F(x) = 1 - e^{-(x^{\gamma})} \hspace{.3in} x \geq 0; \gamma > 0$$
 		\\[0.3cm]
-		The \ac{CDF} of the Weibull Distribution can now be calculated in \setlx\ by calling \lstinline{stat_weibullCDF(x, shape, scale)} or plotted on a given canvas by calling \lstinline{stat_weibullCDF_plot(shape, scale, canvas)}.
+		The \ac{CDF} of the Weibull Distribution can now be calculated in \setlx\ by calling \lstinline{stat_weibullCDF(x, shape, scale)} or plotted on a given canvas by calling \lstinline{stat_weibullCDF_plot(shape, scale, canvas)}.\footnote{\url{https://en.wikipedia.org/wiki/Weibull_distribution}}
 		
