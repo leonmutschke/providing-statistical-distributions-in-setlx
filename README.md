@@ -9,3 +9,8 @@ designed by Prof. Dr. Karl Stroetmann. However, SetlX is an evolution of the hig
 language SETL, designed by Jacob T. Schwartz. Both languages are based on the mathematical theory of sets
 and offers many mathematical algorithms. SetlX was designed to make the unique features of SETL more
 accessible to today’s computer science students.
+
+## Compile
+You can compile the document with the following command:
+
+```pdflatex seminarpaper.tex```
