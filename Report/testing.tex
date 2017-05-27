@@ -22,7 +22,7 @@
 	For the statistical distributions asset a new file \lstinline{stat.stlx} was created inside the \lstinline{integrationTests} folder. This file holds the tests for all 24 implemented distributions. At the beginning of the file, a special file named \lstinline{baseIntegrationTest.stlx} is loaded that will validate the tests. For each distribution, a \setlx\ procedure was written. The following listing shows this with an example. 
 
 	\begin{center}
-		\begin{lstlisting}[caption={Test File Example}, language={setlx}, label=lis:exampleCode]
+		\begin{lstlisting}[caption={Integration Test Example}, language={setlx}, label=lis:integrationTest]
 		statChiSquared := procedure() {
 			if (stat_chiSquared(2,3) == 0.2075537487102973) {
 				correct := true;
@@ -70,7 +70,7 @@
 	In total 24 statistical distributions were implemented. For each function, a test and a reference file were created, so that there are 48 files in total. All test files follow the same pattern, which is shown in the following listing. The reference files only contain the solution of the program, which would be 0.04405413986167643 in case of the example below.
 
 	\begin{center}
-		\begin{lstlisting}[caption={Test File Example}, language={setlx}, label={lis:exampleCode}]
+		\begin{lstlisting}[caption={Regression Test Example}, language={setlx}, label={lis:regressionTestExample}]
 		// Example for stat_normal(x, mu, sigma)
 
 		statNormal := procedure(x, mu, sigma) {
