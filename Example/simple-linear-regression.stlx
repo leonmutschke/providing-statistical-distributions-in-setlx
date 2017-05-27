@@ -27,7 +27,6 @@ simple_linear_regression := procedure(fileName, types, name) {
     plot_addBullets(canvas, [ [X[i], Y[i]] : i in L ], [0,0,255], 2.0);
     plot_modSize(canvas, [1000, 1000]);
     plot_labelAxis(canvas, name, "price");
-    print(t, p);
     return [R2, p];
 };
 // Find the index of x in List.
