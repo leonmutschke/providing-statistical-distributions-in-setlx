@@ -1,0 +1,47 @@
+load("table.stlx");
+
+simple_linear_regression := procedure(fileName, types, name) {
+    csv  := readTable(fileName, types);
+    data := csv.getData();
+    m    := #data;
+    idx  := find_index(name, csv.getColumnNames());
+    Y    := [];
+    X    := [];
+    L    := [1 .. m];
+    for (i in L) {
+        Y[i] := 1 / data[i][1];
+        X[i] := data[i][idx];
+    }
+    xMean  := +/ X / m;
+    yMean  := +/ Y / m;
+    theta1 := (+/ [(X[i]-xMean)*(Y[i]-yMean) : i in L]) / (+/ [(X[i]-xMean)**2 : i in L]);
+    theta0 := yMean - theta1 * xMean;
+    TSS    := +/ [(Y[i] - yMean) ** 2 : i in L];
+    RSS    := +/ [(theta0 + theta1 * X[i] - Y[i]) ** 2 : i in L];
+    R2     := 1 - RSS / TSS;
+    XSS    := +/ [(X[i] - xMean) ** 2 : i in L];
+    t      := abs(theta1) * sqrt((m-2) / RSS * XSS);
+    p      := 1 - stat_studentCDF(t, m-2);
+
+    canvas := plot_createCanvas("Price vs. $name$");
+    plot_addBullets(canvas, [ [X[i], Y[i]] : i in L ], [0,0,255], 2.0);
+    plot_modSize(canvas, [1000, 1000]);
+    plot_labelAxis(canvas, name, "price");
+    print(t, p);
+    return [R2, p];
+};
+// Find the index of x in List.
+find_index := procedure(x, List) {
+    return arb({ idx : idx in [1 .. #List] | List[idx] == x });
+};
+
+test := procedure() {
+    types := ["double", "int", "double"];
+    for (varName in ["\"Age\"", "\"Mileage\""]) {
+        [R2, p] := simple_linear_regression("PorschePrice.csv", types, varName);
+        print("The explained variance for $varName$ vs the price is $R2$, p value: $p$.");
+        get("Press Enter to continue");
+    }
+};
+
+test();
