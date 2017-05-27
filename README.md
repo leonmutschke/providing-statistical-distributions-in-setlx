@@ -5,7 +5,7 @@ concepts and development of implementing certain statistical distributions in th
 
 ## What is SetlX?
 SetlX (SET Language Extended) is an interpreted high-level programming language. It was and is mostly
-designed by Prof. Dr. Karl Stroetmann. However, SetlX is an evolution of the high-level programming
+designed by Prof. Dr. Karl Stroetmann and Tom Herrmann. However, SetlX is an evolution of the high-level programming
 language SETL, designed by Jacob T. Schwartz. Both languages are based on the mathematical theory of sets
 and offers many mathematical algorithms. SetlX was designed to make the unique features of SETL more
 accessible to today’s computer science students.
