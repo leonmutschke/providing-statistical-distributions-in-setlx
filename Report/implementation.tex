@@ -49,15 +49,15 @@ To finish up the formal definition of a function, a default constructor is neede
 	\end{lstlisting}
 \end{center}
 
-Up till this point, everything that was done can basically be done for any new function by just changing the name and the required parameters. The thing that sets every function apart is the \lstinline{execute} method that needs to be overridden when extending \lstinline{PreDefinedProcedure}. This method is called when the function gets called as a \setlx\ function from within the interpreter. It takes the parameters that were defined for the function, performs some computation with these parameters and returns the result which is then shown in the interpreter.
+Up to this point, everything that was done can basically be done for any new function by just changing the name and the required parameters. The thing that sets every function apart is the \lstinline{execute} method that needs to be overridden when extending \lstinline{PreDefinedProcedure}. This method is called when the function gets called as a \setlx\ function from within the interpreter. It takes the parameters that were defined for the function, performs some computation with these parameters and returns the result which is then shown in the interpreter.
 
 \section{Computation}
 
-Any parameter that a function gets called with is given to the \lstinline{execute} method within an array called \lstinline{args}. From this array every parameter can be retreived by calling \lstinline{args.get(NAME)} with \lstinline{NAME} being the names of the \lstinline{ParameterDefinition} variables that were defined for the function. Since the \lstinline{execute} 
+Any parameter that a function gets called with is given to the \lstinline{execute} method within an array called \lstinline{args}. From this array every parameter can be retreived by calling \lstinline{args.get(NAME)} with \lstinline{NAME} being one of the names of the \lstinline{ParameterDefinition} variables that were defined for the function. Since the \lstinline{execute} 
 method bears almost no common concepts between different kinds of functions but shows high similarities across all statistical distribution functions that were implemented by the authors, the normal distribution function will be used as an example in this chapter to show the work of the authors and provide a basic understanding of what the \lstinline{execute} method is supposed to do and how it could be implemented for new functions. The purpose of this function is to compute the propability density at some point \textit{x} with given parameters $\mu$ and $\sigma$. To start, the method definition and the retrieval of all parameters for the normal distribution function can be seen below:
 
 \begin{center}
-	\begin{lstlisting}[caption={execute method and parameter retrieval}, language={java}, label=lis:parameterRetrieval]
+	\begin{lstlisting}[caption={Execute method and parameter retrieval}, language={java}, label=lis:parameterRetrieval]
 		/** Definition of the PreDefinedProcedure 'stat_normal' */
 		@Override
 		public Value execute(State state, HashMap<ParameterDefinition, Value> args) throws SetlException {
@@ -103,7 +103,7 @@ method bears almost no common concepts between different kinds of functions but 
 	\end{lstlisting}
 \end{center}
 
-If every given parameter was checked and none of the \lstinline{checker} methods threw an exception, the actual computation of the statistical distribution can begin. To do this computation, the authors chose the \href{http://commons.apache.org/proper/commons-math/userguide/distribution.html}{Apache Commons Math} library due to a vast number of statistical distributions being supported. To perform calculations with a certain statistical distribution, an object of that distribution has to be created via its constructor using the function-specific parameters, which would be $\mu$ and $\sigma$ in case of the normal distribution. On this object the methods \lstinline{density(x)} and \lstinline{cumulativePropability(x)} can be called to compute the propability density or the cumulative propability for some value \textit{x} respectively. Putting it all together, the computation of the propability density for normal distributions looks like this:
+If every given parameter was checked and none of the \lstinline{checker} methods threw an exception, the actual computation of the statistical distribution can begin. To do this computation, the authors have chosen the \href{http://commons.apache.org/proper/commons-math/userguide/distribution.html}{Apache Commons Math} library due to a vast number of statistical distributions being supported. To perform calculations with a certain statistical distribution, an object of that distribution has to be created via its constructor using the function-specific parameters, which would be $\mu$ and $\sigma$ in case of the normal distribution. On this object the methods \lstinline{density(x)} and \lstinline{cumulativePropability(x)} can be called to compute the propability density or the cumulative propability for some value \textit{x} respectively. Putting it all together, the computation of the propability density for normal distributions looks like this:
 
 \begin{center}
 	\begin{lstlisting}[caption={Normal Distribution propability density computation}, language={java}, label=lis:densityComputation]

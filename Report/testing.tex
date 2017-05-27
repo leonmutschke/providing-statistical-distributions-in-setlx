@@ -49,7 +49,7 @@
 
 	Regression tests basically check that everything still works the same. This is especially very important after changes have been done.
 
-	To test all regression tests within the folder, a script named \lstinline{test_all_examples} needs to be executed. The script will first run all integration tests and after validating these tests, the script will check the regression tests, by searching for files that end in \lstinline{.stlx} and files that have the same basename, but end in \lstinline{.stlx.reference}. Once both files are found, the \lstinline{.stlx} file will be executed and the result will be compared with the corresponding \lstinline{.stlx.reference} file, that definitely contains the solution of the \setlx\ program. For the comparison \lstinline{diff} is used. If the result matches the solution, the diff needs to be empty. If so, the next source file will be executed. If not, the script will stop and the result needs to be analyzed.
+	To test all regression tests within the folder, a script named \lstinline{test_all_examples} needs to be executed. The script will first run all integration tests and after validating these tests, the script will check the regression tests, by searching for files that end in \lstinline{.stlx} and files that have the same basename, but end in \lstinline{.stlx.reference}. Once both files are found, the \lstinline{.stlx} file will be executed and the result will be compared with the corresponding \lstinline{.stlx.reference} file, that definitely contains the solution of the \setlx\ program. For the comparison \lstinline{diff} is used. If the result matches the solution, the diff needs to be empty. If so, the next source file will be executed. If a regression test fails, the output of diff is stored in a file, but the test proceeds. The file can then be analyzed.
 
 	The idea was to expand this scheme for the tests of the implemented statistical distributions. Since each asset has its own test folder, it was decided to create a new folder named \lstinline{stat_test_code}, which would then contain all test and reference files. The resulting folder structure of \lstinline{example_SetlX_code} looks like the following:
 	
@@ -125,6 +125,7 @@
 
 	It was also decided to call this script, when \lstinline{createDistributions} is executed. But since the values of both libraries normally do not change, it is not necessary to do the comparison every time, when \lstinline{createDistributions} is called. To force \lstinline{createDistributions} to execute the comparison, a flag \lstinline{statTests} needs to be set. To check for the flag, an if clause was implemented. This clause is shown in the following listing.
 
+	
 	\begin{center}
 		\begin{lstlisting}[caption={Check for statTests flag}, language={bash}, label={lis:stattestsflag}]
 			if [ "$1" = "statTests" ] || [[ "$2" = "statTests" ]]; then

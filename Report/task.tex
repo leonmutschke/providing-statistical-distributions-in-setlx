@@ -2,13 +2,13 @@
 
 \chapter*{The Task}
 
-	The task was to implement certain statistical distributions in \setlx. These statistical distributions are needed in order to use \setlx\ in machine learning. There are several libraries, which provide implementations of the most used distribution functions. There is no requirement on what library should be used. However, the \href{http://commons.apache.org/proper/commons-math/index.html}{Apache commons math library} was recommended, since it provides all statistical distributions that are in widespread use. The functions which should be implemented are listed in the following.
+	The task was to implement certain statistical distributions in \setlx. These statistical distributions are needed in order to use \setlx\ both in statistics and in machine learning. There are several libraries, which provide implementations of the most used distribution functions. There is no requirement on what library should be used. However, the \href{http://commons.apache.org/proper/commons-math/index.html}{Apache commons math library} was recommended, since it provides all statistical distributions that are in widespread use. The functions which should be implemented are listed in the following.
 
 	\begin{enumerate}
 		\item \texttt{stat\_normal(x, mu, sigma)}
 
-			This function computes the normal distribution with mean \texttt{mu} and standard deviation
-			\texttt{sigma}.  It is defined as follows:
+			This function computes the \href{https://en.wikipedia.org/wiki/Normal_distribution}{Normal Distribution} with mean $\mu$ and standard deviation
+			$\sigma$.  It is defined as follows:
 			\\[0.2cm]
 			\hspace*{1.3cm}
 			$\ds \texttt{stat\_normal}(x, \mu, \sigma) :=
@@ -16,8 +16,8 @@
 			$.
 		\item \texttt{stat\_normalCDF(x, mu, sigma)}
 
-			This function computes the cumulative normal distribution with mean \texttt{mu} and standard deviation
-			\texttt{sigma}.  It is defined as follows:
+			This function computes the Cumulative Normal Distribution with mean $\mu$ and standard deviation
+			$\sigma$.  It is defined as follows:
 			\\[0.2cm]
 			\hspace*{1.3cm}
 			$\ds \texttt{stat\_normalCDF}(x, \mu, \sigma) :=
@@ -27,8 +27,8 @@
 		\item \texttt{stat\_chiSquared(x, k)}
 		 
 			This function computes the
-			\href{https://en.wikipedia.org/wiki/Chi-squared_distribution}{$\chi^2$-distribution}
-			with \texttt{k} degrees of freedom where \texttt{k} is a natural number and $\texttt{x} > 0$.
+			\href{https://en.wikipedia.org/wiki/Chi-squared_distribution}{$\chi^2$-Distribution}
+			with $k$ degrees of freedom where $k$ is a natural number and $x > 0$.
 			This distribution is defined as follows:
 			\\[0.2cm]
 			\hspace*{1.3cm}
@@ -43,8 +43,8 @@
 			$\ds \Gamma(x) := \int\limits_0^{\infty} t^{x-1} \cdot \exp(-t)\, \mathrm{d}t$.
 		\item \texttt{stat\_chiSquaredCDF(x, k)}
 		 
-			This function computes the cumulative
-			\href{https://en.wikipedia.org/wiki/Chi-squared_distribution}{$\chi^2$-distribution}
+			This function computes the Cumulative
+			\href{https://en.wikipedia.org/wiki/Chi-squared_distribution}{$\chi^2$-Distribution}
 			with \texttt{k} degrees of freedom.  The cumulative $\chi^2$-distribution is defined as follows:
 			\\[0.2cm]
 			\hspace*{1.3cm}
@@ -55,8 +55,8 @@
 		\item \texttt{stat\_student(x, nu)}
 
 			This function computes the 
-			\href{https://en.wikipedia.org/wiki/Student%27s_t-distribution}{Student's t-distribution}
-			for \texttt{x} with \texttt{nu} degrees of freedom.   This function is defined as follows:
+			\href{https://en.wikipedia.org/wiki/Student%27s_t-distribution}{Student's t-Distribution}
+			for $x$ with $\nu$ degrees of freedom.   This function is defined as follows:
 			\\[0.2cm]
 			\hspace*{1.3cm}
 			$\ds \texttt{stat\_student}(x, \nu) := \frac{1}{\sqrt{\nu\cdot\pi}} \cdot
@@ -67,9 +67,9 @@
 			Here, $\nu$ is a natural number.
 		\item \texttt{stat\_studentCDF(x, nu)}
 
-			This function computes the cumulative 
-			\href{https://en.wikipedia.org/wiki/Student%27s_t-distribution}{Student's t-distribution}
-			for \texttt{x} with \texttt{nu} degrees of freedom.   This function is defined as follows:
+			This function computes the Cumulative 
+			\href{https://en.wikipedia.org/wiki/Student%27s_t-distribution}{Student's t-Distribution}
+			for $x$ with $\nu$ degrees of freedom.   This function is defined as follows:
 			\\[0.2cm]
 			\hspace*{1.3cm}
 			$\ds \texttt{stat\_studentCDF}(x, \nu) := \frac{1}{\sqrt{\nu\cdot\pi}} \cdot
@@ -79,7 +79,7 @@
 		\item \texttt{stat\_fisher(x, a, b)}
 
 			This function computes the 
-			\href{https://en.wikipedia.org/wiki/F-distribution}{Fisher-Snedecor distribution}.
+			\href{https://en.wikipedia.org/wiki/F-distribution}{Fisher-Snedecor Distribution}.
 			It is defined as follows:
 			\\[0.2cm]
 			\hspace*{1.3cm}
@@ -91,8 +91,8 @@
 			This function is only defined for $x \geq 0$.  $m$ and $n$ are integers.
 		\item \texttt{stat\_fisherCDF(x, a, b)}
 
-			This function computes the cumulative
-			\href{https://en.wikipedia.org/wiki/F-distribution}{Fisher-Snedecor distribution}.
+			This function computes the Cumulative
+			\href{https://en.wikipedia.org/wiki/F-distribution}{Fisher-Snedecor Distribution}.
 			It is defined as follows:
 			\\[0.2cm]
 			\hspace*{1.3cm}
