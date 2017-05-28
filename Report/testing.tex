@@ -123,10 +123,10 @@
 
 	To test, whether the Python values and the \setlx\ values are the same, a script named \lstinline{test_stat_examples} was written. This script is located in the same folder as the script \lstinline{test_all_examples}. To test, if both values match, the script searches the \setlx\ reference test files in the given folder. For each of these files, it searches for the corresponding Python reference file. Once found, it compares both values by a given fault tolerance of $10^{-12}$. If the script does not find any corresponding file, it will throw the error, that there was not found any, but it also explains, how to create these. The comparison of both values can either succeed or fail. Depending on the result, a message will be shown to the user.
 
-	It was also decided to call this script, when \lstinline{createDistributions} is executed. But since the values of both libraries normally do not change, it is not necessary to do the comparison every time, when \lstinline{createDistributions} is called. To force \lstinline{createDistributions} to execute the comparison, a flag \lstinline{statTests} needs to be set. To check for the flag, an if clause was implemented. This clause is shown in the following listing.
+	It was also decided to call this script, when \lstinline{createDistributions} is executed. But since the values of both libraries normally do not change, it is not necessary to do the comparison every time, when \lstinline{createDistributions} is called. To force \lstinline{createDistributions} to execute the comparison, a flag \lstinline{statTests} needs to be set. To check for the flag, an if clause was implemented. This clause is shown in the following listing on the next page.
 
 	
-	\begin{center}
+	\begin{minipage}{\linewidth}
 		\begin{lstlisting}[caption={Check for statTests flag}, language={bash}, label={lis:stattestsflag}]
 			if [ "$1" = "statTests" ] || [[ "$2" = "statTests" ]]; then
 			    echo "=> Testing the statistical distribution functions ..."
@@ -138,4 +138,4 @@
 			    fi
 			fi
 		\end{lstlisting}
-	\end{center}
+	\end{minipage}
