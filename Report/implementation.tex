@@ -68,7 +68,7 @@ method bears almost no common concepts between different kinds of functions but 
 	\end{lstlisting}
 \end{center}
 
- Note that at this point of execution, every parameter is of the abstract type \lstinline{Value}. One characteristic of statistical distribution functions is that in many cases the parameters have to fit certain criteria for the function to execute correctly. The most important one, which is applicable to all distribution functions, is that only numbers are allowed as parameters. Special to the normal distribution function is the requirement that the parameter $\sigma$ is not zero. To check if the parameters that the function was called with fit this criteria, a utility class called \lstinline{Checker} was implemented. This class is stored in the folder \lstinline{utility}, which was created on the level of the \lstinline{functions} folder and contains many different \lstinline{check} methods for any criteria that a distribution function may demand. Shown below are the implementations of the methods \lstinline{checkIfNumber} and \lstinline{checkIfNumberAndNotZero}:
+ Note that at this point of execution, every parameter is of the abstract type \lstinline{Value}. One characteristic of statistical distribution functions is that in many cases the parameters have to fit certain criteria for the function to execute correctly. The most important one, which is applicable to all distribution functions, is that only numbers are allowed as parameters. Special to the normal distribution function is the requirement that the parameter $\sigma$ is greater than zero. To check if the parameters that the function was called with fit this criteria, a utility class called \lstinline{Checker} was implemented. This class is stored in the folder \lstinline{utility}, which was created on the level of the \lstinline{functions} folder and contains many different \lstinline{check} methods for any criteria that a distribution function may demand. Shown below are the implementations of the methods \lstinline{checkIfNumber} and \lstinline{checkIfNumberAndGreaterZero}:
  
  \newpage
  \begin{center}
@@ -78,23 +78,24 @@ method bears almost no common concepts between different kinds of functions but 
 			for (Value value : values) {
 				if (! (value.isRational() == SetlBoolean.TRUE || value.isDouble() == SetlBoolean.TRUE)) {
 					throw new IncompatibleTypeException(
-							"Input-argument '" + value.toString(state) + "' is not a number."
+						"Input-argument '" + value.toString(state) + "' is not a number."
 					);
 				}
 			}
 			return true;
 		}
 
-		/** Checks if given values are numbers and different to zero and if not, throws an exception */
-		public static boolean checkIfNumberAndNotZero(State state, String parameterName, Value... values) throws SetlException{
-			for (Value value: values) {
+		/** Checks if given values are numbers and greater zero and if not, throws an exception */
+		public static boolean checkIfNumberAndGreaterZero(State state, Value... values) throws SetlException {
+			for (Value value : values) {
 				if (! (value.isRational() == SetlBoolean.TRUE || value.isDouble() == SetlBoolean.TRUE)) {
 					throw new IncompatibleTypeException(
 							"Input-argument '" + value.toString(state) + "' is not a number."
 					);
-				} else if (value.toJDoubleValue(state) == 0) {
+				}
+				if (! (value.toJDoubleValue(state) > 0)) {
 					throw new IncompatibleTypeException(
-							"The parameter '" + parameterName + "' cannot be zero."
+						"Input-argument '" + value.toString(state) + "' is not greater than zero."
 					);
 				}
 			}
@@ -147,4 +148,11 @@ Listing \ref{lis:boundsInterval} shows the parameter definitions for the functio
 	\end{lstlisting}
 \end{center}
 
-Shown in listing \ref{lis:densityGraph} is the loop that computes the list of coordinates for the graph, using the same objects and methods that the non-graphical version of the normal distribution function. In the last line, the \lstinline{plot} - addon is then used to draw the graph on the given canvas and create a graphical output that is shown to the user.
+Shown in listing \ref{lis:densityGraph} is the loop that computes the list of coordinates for the graph, using the same objects and methods that the non-graphical version of the normal distribution function. In the last line, the \lstinline{plot} - addon is then used to draw the graph on the given canvas and create a graphical output that is shown to the user. An example for the case of the normal distribution is shown below:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{Figures/implemented_functions/normal_pdf}~\\
+    \caption{Normal Distribution Plot}
+    \label{fig:normalDistPlot}
+\end{figure}
