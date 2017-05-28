@@ -2,15 +2,14 @@
 
 \chapter{Implemented Functions}
 
-	This chapter gives an overview about all implemented functions. Figure \ref{fig:OverviewProbabilityDistributions} on page \pageref{fig:OverviewProbabilityDistributions} shows plots of all the distributions that have been implemented.
-
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\textwidth]{Figures/OverviewProbabilityDistributions}~\\
-		\caption{Overview Probability Distributions}
-		\url{https://commons.apache.org/proper/commons-math/userguide/distribution.html}
-		\label{fig:OverviewProbabilityDistributions}
-	\end{figure}
+	This chapter gives an overview about all implemented functions. Each section contains an exaple of the distribution.
+%	\begin{figure}[h]
+%		\centering
+%		\includegraphics[width=1\textwidth]{Figures/OverviewProbabilityDistributions}~\\
+%		\caption{Overview Probability Distributions}
+%		\url{https://commons.apache.org/proper/commons-math/userguide/distribution.html}
+%		\label{fig:OverviewProbabilityDistributions}
+%	\end{figure}
 
 	\section{Beta Distribution} \label{sec:beta_distribution}
 
@@ -30,6 +29,21 @@
 		\\[0.3cm]
 		The \ac{CDF} of the Beta Distribution is calculated in \setlx\ by calling \lstinline{stat_betaCDF(x, alpha, beta)} or plotted on a given canvas by calling \lstinline{stat_betaCDF_plot(alpha, beta, canvas)}.
 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/beta_pdf}~\\
+			\caption{Example Beta PDF}
+			\label{fig:beta_pdf}
+		\end{figure}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/beta_cdf}~\\
+			\caption{Example Beta CDF}
+			\label{fig:beta_cdf}
+		\end{figure}
+
+
 
 	\section{Cauchy Distribution}
 
@@ -44,6 +58,22 @@
 		$$\ds F(x) = \frac{1}{2} + \frac{1}{\pi} \cdot \arctan\left(\frac{x-t}{s}\right)$$
 		\\[0.3cm]
 		The \ac{CDF} of the Cauchy Distribution is calculated in \setlx\ by calling \lstinline{stat_cauchyCDF(x, t, s)} or plotted on a given canvas by calling \lstinline{stat_cauchyCDF_plot(t, s, canvas)}.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/cauchy_pdf}~\\
+			\caption{Example Cauchy PDF}
+			\label{fig:cauchy_pdf}
+		\end{figure}
+
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/cauchy_cdf}~\\
+			\caption{Example Cauchy CDF}
+			\label{fig:cauchy_cdf}
+		\end{figure}
+
 
 	\section{Chi-squared Distribution}
 
@@ -62,6 +92,22 @@
 		\\[0.3cm]
 		The \ac{CDF} of the Chi-squared Distribution is calculated in \setlx\ by calling \lstinline{stat_chiSquaredCDF(x, k)} or plotted on a given canvas by calling \lstinline{stat_chiSquaredCDF_plot(k, canvas)}.
 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/chi_squared_pdf}~\\
+			\caption{Example Chi-Squared PDF}
+			\label{fig:chi_squared_pdf}
+		\end{figure}
+
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/chi_squared_cdf}~\\
+			\caption{Example Chi-Squared CDF}
+			\label{fig:chi_squared_cdf}
+		\end{figure}
+
+
 	\section{Exponential Distribution}
 
 		The \href{https://en.wikipedia.org/wiki/Exponential_distribution}{Exponential Distribution}\footnote{\url{https://en.wikipedia.org/wiki/Exponential_distribution}} has only the parameter $\lambda$, where $\lambda > 0$. The \ac{PDF} is defined as
@@ -75,6 +121,21 @@
 		$$F(x;\lambda) = \begin{cases} 1-e^{-\lambda x} & x \ge 0 \\ 0 & x < 0. \end{cases}$$
 		\\[0.3cm]
 		The \ac{CDF} of the Exponential Distribution is calculated in \setlx\ by calling \lstinline{stat_exponentialCDF(x, l)} or plotted on a given canvas by calling \lstinline{stat_exponentialCDF_plot(l, canvas)}.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/exponential_pdf}~\\
+			\caption{Example Exponential PDF}
+			\label{fig:exponential_pdf}
+		\end{figure}
+
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/exponential_cdf}~\\
+			\caption{Example Exponential CDF}
+			\label{fig:exponential_cdf}
+		\end{figure}
 
 
 	\section{Fisher-Snedecor Distribution} 
@@ -93,6 +154,21 @@
 		\\[0.3cm]
 		where $I$ is the regularized incomplete beta function (see section \ref{sec:beta_distribution}). The \ac{CDF} of the F-Distribution is calculated in \setlx\ by calling \lstinline{stat_fisherCDF(x, a, b)} or plotted on a given canvas by calling \lstinline{stat_fisherCDF_plot(a, b, canvas)}.
 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/fisher_pdf}~\\
+			\caption{Example Fisher PDF}
+			\label{fig:fisher_pdf}
+		\end{figure}
+
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/fisher_cdf}~\\
+			\caption{Example Fisher CDF}
+			\label{fig:fisher_cdf}
+		\end{figure}
+
 
 	\section{Gamma Distribution}
 
@@ -107,6 +183,21 @@
 		$$F(x;p,b) = \int_0^x f(u;p,b)\,du = \frac{\gamma\left(p, \frac{x}{b}\right)}{\Gamma(p)}$$
 		\\[0.3cm]
 		where $\gamma\left(p, \frac{x}{b}\right)$ is the lower \href{https://en.wikipedia.org/wiki/Incomplete_gamma_function}{incomplete gamma function}. The \ac{CDF} of the Gamma Distribution is calculated in \setlx\ by calling \lstinline{stat_gammaCDF(x, p, b)} or plotted on a given canvas by calling \lstinline{stat_gammaCDF_plot(p, b, canvas)}.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/gamma_pdf}~\\
+			\caption{Example Gamma PDF}
+			\label{fig:gamma_pdf}
+		\end{figure}
+
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/gamma_cdf}~\\
+			\caption{Example Gamma CDF}
+			\label{fig:gamma_cdf}
+		\end{figure}
 
 
 	\section{Levy Distribution}
@@ -123,6 +214,22 @@
 		\\[0.3cm]
 		The \ac{CDF} of the Levy Distribution is calculated in \setlx\ by calling \lstinline{stat_levyCDF(x, mu, scale)} or plotted on a given canvas by calling \lstinline{stat_levyCDF_plot(mu, scale, canvas)}.
 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/levy_pdf}~\\
+			\caption{Example Levy PDF}
+			\label{fig:levy_pdf}
+		\end{figure}
+
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/levy_cdf}~\\
+			\caption{Example Levy CDF}
+			\label{fig:levy_cdf}
+		\end{figure}
+
+
 	\section{Log-Normal Distribution}
 	
 		The \href{https://en.wikipedia.org/wiki/Log-normal_distribution}{Log-Normal Distribution}\footnote{\url{https://en.wikipedia.org/wiki/Log-normal_distribution}} has two parameters $\mu$ (mean) and $\sigma$ (standard deviation) $>$ 0 and is defined for $x \geq 0$. The \ac{PDF} of the Log-Normal Distribution is defined as
@@ -137,6 +244,22 @@
 		\\[0.3cm]
 		The \ac{CDF} of the Log-Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_logNormalCDF(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_logNormalCDF_plot(mu, sigma, canvas)}.
 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/log_normal_pdf}~\\
+			\caption{Example Log-Normal PDF}
+			\label{fig:log_normal_pdf}
+		\end{figure}
+
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/log_normal_cdf}~\\
+			\caption{Example Log-Normal CDF}
+			\label{fig:log_normal_cdf}
+		\end{figure}
+
+
 	\section{Normal Distribution}
 	
 		The \href{https://en.wikipedia.org/wiki/Normal_distribution}{Normal Distribution}\footnote{\url{https://en.wikipedia.org/wiki/Normal_distribution}} has two parameters $\mu$ (mean) and $\sigma$ (standard deviation) $>$ 0. The \ac{PDF} of the Normal Distribution is defined as
@@ -150,6 +273,22 @@
 		$$\Phi(x) = \frac 1 {\sqrt{2\pi}} \int_{-\infty}^x e^{-t^2/2}$$
 		\\[0.3cm]
 		The \ac{CDF} of the Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_normalCDF(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_normalCDF_plot(mu, sigma, canvas)}.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/normal_pdf}~\\
+			\caption{Example Normal PDF}
+			\label{fig:normal_pdf}
+		\end{figure}
+
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/normal_cdf}~\\
+			\caption{Example Normal CDF}
+			\label{fig:normal_cdf}
+		\end{figure}
+
 		
 	\section{Pareto Distribution}
 	
@@ -164,6 +303,22 @@
 		$$F_X(x) = \begin{cases}1-\left(\frac{x_\mathrm{m}}{x}\right)^\alpha & x \ge x_\mathrm{m}, \\0 & x < x_\mathrm{m}.\end{cases}$$
 		\\[0.3cm]
 		The \ac{CDF} of the Pareto Distribution is calculated in \setlx\ by calling \lstinline{stat_paretoCDF(x, scale, shape)} or plotted on a given canvas by calling \lstinline{stat_paretoCDF_plot(scale, shape, canvas)}.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/pareto_pdf}~\\
+			\caption{Example Pareto PDF}
+			\label{fig:pareto_pdf}
+		\end{figure}
+
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/pareto_cdf}~\\
+			\caption{Example Pareto CDF}
+			\label{fig:pareto_cdf}
+		\end{figure}
+
 		
 	\section{Student-T Distribution}
 	
@@ -180,6 +335,22 @@
 		where $$x(t) = \frac{\nu}{{t^2+\nu}}$$
 		\\[0.3cm]
 		The \ac{CDF} of the Student-T Distribution is calculated in \setlx\ by calling \lstinline{stat_studentCDF(x, nu)} or plotted on a given canvas by calling \lstinline{stat_studentCDF_plot(nu, canvas)}.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/student_pdf}~\\
+			\caption{Example Student-T PDF}
+			\label{fig:student_pdf}
+		\end{figure}
+
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/student_cdf}~\\
+			\caption{Example Student-T CDF}
+			\label{fig:student_cdf}
+		\end{figure}
+
 		
 	\section{Weibull Distribution}
 	
@@ -195,3 +366,17 @@
 		\\[0.3cm]
 		The \ac{CDF} of the Weibull Distribution is calculated in \setlx\ by calling \lstinline{stat_weibullCDF(x, shape, scale)} or plotted on a given canvas by calling \lstinline{stat_weibullCDF_plot(shape, scale, canvas)}.
 		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/weibull_pdf}~\\
+			\caption{Example Weibull PDF}
+			\label{fig:weibull_pdf}
+		\end{figure}
+
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{Figures/implemented_functions/weibull_cdf}~\\
+			\caption{Example Weibull CDF}
+			\label{fig:weibull_cdf}
+		\end{figure}
