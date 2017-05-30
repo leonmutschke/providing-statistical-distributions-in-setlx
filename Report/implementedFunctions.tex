@@ -212,6 +212,7 @@
 		\\[0.3cm]
 		$$F(x;\mu,c)=\textrm{erfc}\left(\sqrt{\frac{c}{2(x-\mu)}}\right)$$
 		\\[0.3cm]
+		where $erfc$ is the complementary error function.
 		The \ac{CDF} of the Levy Distribution is calculated in \setlx\ by calling \lstinline{stat_levyCDF(x, mu, scale)} or plotted on a given canvas by calling \lstinline{stat_levyCDF_plot(mu, scale, canvas)}.
 
 		\begin{figure}[H]
@@ -240,8 +241,9 @@
 		\\[0.3cm]
 		The \ac{CDF} of the Log-Normal Distribution is defined as
 		\\[0.3cm]
-		$$F_X(x) = \Phi\left( \frac{(\ln x) - \mu} \sigma \right)$$
+		$$F_X(x) = \frac12 \operatorname{erfc} \left(-\frac{\ln x - \mu}{\sigma\sqrt{2}}\right)$$
 		\\[0.3cm]
+		where $erfc$ is the complementary error function.
 		The \ac{CDF} of the Log-Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_logNormalCDF(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_logNormalCDF_plot(mu, sigma, canvas)}.
 
 		\begin{figure}[H]
@@ -264,8 +266,9 @@
 	
 		The \href{https://en.wikipedia.org/wiki/Normal_distribution}{Normal Distribution}\footnote{\url{https://en.wikipedia.org/wiki/Normal_distribution}} has two parameters $\mu$ (mean) and $\sigma$ (standard deviation) $>$ 0. The \ac{PDF} of the Normal Distribution is defined as
 		\\[0.3cm]
-		$$f(x \mid \mu, \sigma^2) =\frac 1 \sigma \varphi\left(\frac{x-\mu} \sigma \right)$$
+		$$f(x) = e^{a x^2 + b x + c}$$
 		\\[0.3cm]
+		where $a$ is negative and $c$ is $b^2/(4a)+\ln(-a/\pi)/2$. In this form, the mean value $\mu$ is $−b/(2a)$, and the variance $\sigma^2$ is $−1/(2a)$.
 		The \ac{PDF} of the Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_normal(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_normal_plot(mu, sigma, canvas)}.
 		\\[0.3cm]
 		The \ac{CDF} of the Normal Distribution is defined as
