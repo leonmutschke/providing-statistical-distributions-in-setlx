@@ -124,14 +124,15 @@ While working on the first few distribution functions, the authors noticed that 
 		private final static ParameterDefinition MU          = createParameter("mu");
 		private final static ParameterDefinition SIGMA       = createParameter("sigma");
 		private final static ParameterDefinition CANVAS      = createParameter("canvas");
+		private final static ParameterDefinition COLOR       = createOptionalParameter("color", new SetlString("DEFAULT_COLOR"));
 		private final static ParameterDefinition LOWER_BOUND = createOptionalParameter("lowerBound", Defaults.createSetlDoubleValue(-5.0));
 		private final static ParameterDefinition INTERVAL    = createOptionalParameter("interval", Defaults.getDefaultPlotInterval());
 		private final static ParameterDefinition UPPER_BOUND = createOptionalParameter("upperBound", Defaults.createSetlDoubleValue(5.0));
 	\end{lstlisting}
 \end{center}
 
-Listing \ref{lis:boundsInterval} shows the parameter definitions for the function \lstinline{stat_normal_plot}, which demonstrate how optional parameters are defined using the \lstinline{createOptionalParameter()} - method. Important to note here is the parameter canvas: This is part of the \lstinline{plot} - addon and represents the surface any graphical output is drawn on.
-
+Listing \ref{lis:boundsInterval} shows the parameter definitions for the function \lstinline{stat_normal_plot}, which demonstrate how optional parameters are defined using the \lstinline{createOptionalParameter()} - method. Important to note here is the parameter canvas: This is part of the \lstinline{plot} - addon and represents the surface any graphical output is drawn on. The color of the output graph may be adjusted by providing a color
+parameter of the form [R,G,B] (an array with three values - red, green and blue). For example, calling \lstinline{stat_normal_plot(canvas, mu, sigma, [255, 0, 0])} would produce a red graph. 
 \begin{center}
 	\begin{lstlisting}[caption={Computation of propability density graph for Normal Distributions}, language={java}, label=lis:densityGraph]
 		NormalDistribution nd = new NormalDistribution(mu.toJDoubleValue(state), sigma.toJDoubleValue(state));
