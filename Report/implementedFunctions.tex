@@ -266,14 +266,14 @@
 	
 		The \href{https://en.wikipedia.org/wiki/Normal_distribution}{Normal Distribution}\footnote{\url{https://en.wikipedia.org/wiki/Normal_distribution}} has two parameters $\mu$ (mean) and $\sigma$ (standard deviation) $>$ 0. The \ac{PDF} of the Normal Distribution is defined as
 		\\[0.3cm]
-		$$f(x) = e^{a x^2 + b x + c}$$
+		$$f(x) = \frac{1}{\sigma \cdot \sqrt{2 \cdot \pi}} \cdot \exp\left(-\frac{(x-\mu)^2}{2 \cdot \sigma^2}\right)$$
 		\\[0.3cm]
-		where $a$ is negative and $c$ is $b^2/(4a)+\ln(-a/\pi)/2$. In this form, the mean value $\mu$ is $−b/(2a)$, and the variance $\sigma^2$ is $−1/(2a)$.
 		The \ac{PDF} of the Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_normal(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_normal_plot(mu, sigma, canvas)}.
 		\\[0.3cm]
 		The \ac{CDF} of the Normal Distribution is defined as
 		\\[0.3cm]
-		$$\Phi(x) = \frac 1 {\sqrt{2\pi}} \int_{-\infty}^x e^{-t^2/2}$$
+		$$F(x) = \frac{1}{\sigma \cdot \sqrt{2 \cdot \pi}} \cdot 
+			\int\limits_{-\infty}^x \exp\left(-\frac{(t-\mu)^2}{2 \cdot \sigma^2}\right) \mathrm{d}x$$
 		\\[0.3cm]
 		The \ac{CDF} of the Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_normalCDF(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_normalCDF_plot(mu, sigma, canvas)}.
 
