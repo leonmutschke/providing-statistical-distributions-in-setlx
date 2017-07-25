@@ -21,13 +21,14 @@
 
 		$$B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$$
 		\\[0.3cm]
-		where $\Gamma$ denotes the gamma function. The \ac{PDF} of the Beta Distribution is calculated in \setlx\ by calling \lstinline{stat_beta(x, alpha, beta)} or plotted on a given canvas by calling \lstinline{stat_beta_plot(alpha, beta, canvas)}.
+		where $\Gamma$ denotes the gamma function. The \ac{PDF} of the Beta Distribution is calculated in \setlx\ by calling \lstinline{stat_beta(x, alpha, beta)} or plotted on a given canvas by calling \lstinline{stat_beta_plot(canvas, alpha, beta)}.
 		\\[0.3cm]		
 		The \ac{CDF} of the Beta Distribution is defined as
 
 		$$F(x) = I_{x}(\alpha,\beta) = \frac{\int_{0}^{x}{t^{\alpha-1}(1-t)^{\beta-1}dt}}{B(\alpha,\beta)} \hspace{.3in} 0 \le x \le 1; \alpha, \beta > 0$$
 		\\[0.3cm]
-		The \ac{CDF} of the Beta Distribution is calculated in \setlx\ by calling \lstinline{stat_betaCDF(x, alpha, beta)} or plotted on a given canvas by calling \lstinline{stat_betaCDF_plot(alpha, beta, canvas)}.
+		where $I_{x}(\alpha,\beta)$ is the \href{https://en.wikipedia.org/wiki/Beta_function#Incomplete_beta_function}{incomplete beta function}.
+		The \ac{CDF} of the Beta Distribution is calculated in \setlx\ by calling \lstinline{stat_betaCDF(x, alpha, beta)} or plotted on a given canvas by calling \lstinline{stat_betaCDF_plot(canvas, alpha, beta)}.
 
 		\begin{figure}[H]
 			\centering
@@ -51,13 +52,13 @@
 
 		$$\ds f(x) = \frac{1}{\pi} \cdot \frac{s}{s^2 + (x-t)^2} \quad \hspace{.3in} -\infty<x<\infty$$
 		\\[0.3cm]
-		The \ac{PDF} of the Cauchy Distribution is calculated in \setlx\ by calling \lstinline{stat_cauchy(x, t, s)} or plotted on a given canvas by calling \lstinline{stat_cauchy_plot(t, s, canvas)}.
+		The \ac{PDF} of the Cauchy Distribution is calculated in \setlx\ by calling \lstinline{stat_cauchy(x, t, s)} or plotted on a given canvas by calling \lstinline{stat_cauchy_plot(canvas, t, s)}.
 		\\[0.3cm]
 		The \ac{CDF} is defined as 
 
 		$$\ds F(x) = \frac{1}{2} + \frac{1}{\pi} \cdot \arctan\left(\frac{x-t}{s}\right)$$
 		\\[0.3cm]
-		The \ac{CDF} of the Cauchy Distribution is calculated in \setlx\ by calling \lstinline{stat_cauchyCDF(x, t, s)} or plotted on a given canvas by calling \lstinline{stat_cauchyCDF_plot(t, s, canvas)}.
+		The \ac{CDF} of the Cauchy Distribution is calculated in \setlx\ by calling \lstinline{stat_cauchyCDF(x, t, s)} or plotted on a given canvas by calling \lstinline{stat_cauchyCDF_plot(canvas, t, s)}.
 
 		\begin{figure}[H]
 			\centering
@@ -84,13 +85,17 @@
 			\dfrac{x^{(k/2-1)} e^{-x/2}}{2^{k/2} \Gamma\left(\frac k 2 \right)},  & x > 0; \\ 0, & \text{otherwise}.
 		\end{cases}$$
 		\\[0.3cm]
-		where $\Gamma$ is the gamma function. The \ac{PDF} of the Chi-squared Distribution is calculated in \setlx\ by calling \lstinline{stat_chiSquared(x, k)} or plotted on a given canvas by calling \lstinline{stat_chiSquared_plot(k, canvas)}.
+		where $\Gamma$ is the gamma function. The \ac{PDF} of the Chi-squared Distribution is calculated in \setlx\ by calling \lstinline{stat_chiSquared(x, k)} or plotted on a given canvas by calling \lstinline{stat_chiSquared_plot(canvas, k)}.
 		\\[0.3cm]
 		The \ac{CDF} of the Chi-squared Distribution is defined as
 
 		$$F(x;\,k) = \frac{\gamma(\frac{k}{2},\,\frac{x}{2})}{\Gamma(\frac{k}{2})} = P\left(\frac{k}{2},\,\frac{x}{2}\right)$$
 		\\[0.3cm]
-		The \ac{CDF} of the Chi-squared Distribution is calculated in \setlx\ by calling \lstinline{stat_chiSquaredCDF(x, k)} or plotted on a given canvas by calling \lstinline{stat_chiSquaredCDF_plot(k, canvas)}.
+		where $\gamma(\frac{k}{2},\,\frac{x}{2})$ is the lower \href{https://en.wikipedia.org/wiki/Incomplete_gamma_function}{incomplete gamma function}. The lower incomplete gamma function is defined as 
+
+		$$\gamma(s, x) = \int_{0}^{x}{t^{s-1}e^{-t} dt}$$
+		\\[0.3cm]
+		The \ac{CDF} of the Chi-squared Distribution is calculated in \setlx\ by calling \lstinline{stat_chiSquaredCDF(x, k)} or plotted on a given canvas by calling \lstinline{stat_chiSquaredCDF_plot(canvas, k)}.
 
 		\begin{figure}[H]
 			\centering
@@ -114,13 +119,13 @@
 
 		$$f(x;\lambda) = \begin{cases} \lambda e^{-\lambda x} & x \ge 0, \\ 0 & x < 0. \end{cases}$$
 		\\[0.3cm]
-		The \ac{PDF} of the Exponential Distribution is calculated in \setlx\ by calling \lstinline{stat_exponential(x, l)} or plotted on a given canvas by calling \lstinline{stat_exponential_plot(l, canvas)}.
+		The \ac{PDF} of the Exponential Distribution is calculated in \setlx\ by calling \lstinline{stat_exponential(x, l)} or plotted on a given canvas by calling \lstinline{stat_exponential_plot(canvas, l)}.
 		\\[0.3cm]
 		The \ac{CDF} is defined as
 
 		$$F(x;\lambda) = \begin{cases} 1-e^{-\lambda x} & x \ge 0 \\ 0 & x < 0. \end{cases}$$
 		\\[0.3cm]
-		The \ac{CDF} of the Exponential Distribution is calculated in \setlx\ by calling \lstinline{stat_exponentialCDF(x, l)} or plotted on a given canvas by calling \lstinline{stat_exponentialCDF_plot(l, canvas)}.
+		The \ac{CDF} of the Exponential Distribution is calculated in \setlx\ by calling \lstinline{stat_exponentialCDF(x, l)} or plotted on a given canvas by calling \lstinline{stat_exponentialCDF_plot(canvas, l)}.
 
 		\begin{figure}[H]
 			\centering
@@ -146,13 +151,13 @@
 			f(x) = \frac{1}{\mathrm{B}\!\left(\frac{a}{2},\frac{b}{2}\right)} \left(\frac{a}{b}\right)^{\frac{a}{2}} x^{\frac{a}{2} - 1} \left(1+\frac{a}{b}\,x\right)^{-\frac{a+b}{2}}
 		$$
 		\\[0.3cm]
-		where $\Gamma$ denotes the gamma function. The \ac{PDF} of the F-Distribution is calculated in \setlx\ by calling \lstinline{stat_fisher(x, a, b)} or plotted on a given canvas by calling \lstinline{stat_fisher_plot(a, b, canvas)}.
+		where $\Gamma$ denotes the gamma function. The \ac{PDF} of the F-Distribution is calculated in \setlx\ by calling \lstinline{stat_fisher(x, a, b)} or plotted on a given canvas by calling \lstinline{stat_fisher_plot(canvas, a, b)}.
 		\\[0.3cm]
 		The \ac{CDF} is defined as
 
 		$$F(x; a,b)=I_{\frac{a x}{a x + b}}\left (\tfrac{a}{2}, \tfrac{b}{2} \right)$$
 		\\[0.3cm]
-		where $I$ is the regularized incomplete beta function (see section \ref{sec:beta_distribution}). The \ac{CDF} of the F-Distribution is calculated in \setlx\ by calling \lstinline{stat_fisherCDF(x, a, b)} or plotted on a given canvas by calling \lstinline{stat_fisherCDF_plot(a, b, canvas)}.
+		where $I$ is the regularized incomplete beta function (see section \ref{sec:beta_distribution}). The \ac{CDF} of the F-Distribution is calculated in \setlx\ by calling \lstinline{stat_fisherCDF(x, a, b)} or plotted on a given canvas by calling \lstinline{stat_fisherCDF_plot(canvas, a, b)}.
 
 		\begin{figure}[H]
 			\centering
@@ -170,19 +175,19 @@
 		\end{figure}
 
 
-	\section{Gamma Distribution}
+	\section{Gamma Distribution}\label{sec:gamma_distribution}
 
 		The \href{https://en.wikipedia.org/wiki/Gamma_distribution}{Gamma Distribution}\footnote{\url{https://en.wikipedia.org/wiki/Gamma_distribution}} has the shape and scale parameters $p$ and $b$, where $p,b > 0$. The \ac{PDF} is defined as
 
 		$$f(x;p,b) =  \frac{x^{p-1}e^{-\frac{x}{b}}}{b^p\Gamma(p)} \quad \text{ for } x > 0 \text{ and } p, b > 0.$$
 		\\[0.3cm]
-		where $\Gamma(p)$ is a complete \href{https://en.wikipedia.org/wiki/Gamma_function}{gamma function}. The \ac{PDF} of the Gamma Distribution is calculated in \setlx\ by calling \lstinline{stat_gamma(x, p, b)} or plotted on a given canvas by calling \lstinline{stat_gamma_plot(p, b, canvas)}.
+		where $\Gamma(p)$ is a complete \href{https://en.wikipedia.org/wiki/Gamma_function}{gamma function}. The \ac{PDF} of the Gamma Distribution is calculated in \setlx\ by calling \lstinline{stat_gamma(x, p, b)} or plotted on a given canvas by calling \lstinline{stat_gamma_plot(canvas, p, b)}.
 		\\[0.3cm]
 		The \ac{CDF} is defined as
 
 		$$F(x;p,b) = \int_0^x f(u;p,b)\,du = \frac{\gamma\left(p, \frac{x}{b}\right)}{\Gamma(p)}$$
 		\\[0.3cm]
-		where $\gamma\left(p, \frac{x}{b}\right)$ is the lower \href{https://en.wikipedia.org/wiki/Incomplete_gamma_function}{incomplete gamma function}. The \ac{CDF} of the Gamma Distribution is calculated in \setlx\ by calling \lstinline{stat_gammaCDF(x, p, b)} or plotted on a given canvas by calling \lstinline{stat_gammaCDF_plot(p, b, canvas)}.
+		where $\gamma\left(p, \frac{x}{b}\right)$ is the lower \href{https://en.wikipedia.org/wiki/Incomplete_gamma_function}{incomplete gamma function}. The \ac{CDF} of the Gamma Distribution is calculated in \setlx\ by calling \lstinline{stat_gammaCDF(x, p, b)} or plotted on a given canvas by calling \lstinline{stat_gammaCDF_plot(canvas, p, b)}.
 
 		\begin{figure}[H]
 			\centering
@@ -206,14 +211,14 @@
 		\\[0.3cm]
 		$$f(x;\mu,c)=\sqrt{\frac{c}{2\pi}}~~\frac{e^{ -\frac{c}{2(x-\mu)}}} {(x-\mu)^{3/2}}$$
 		\\[0.3cm]
-		The \ac{PDF} of the Levy Distribution is calculated in \setlx\ by calling \lstinline{stat_levy(x, mu, scale)} or plotted on a given canvas by calling \lstinline{stat_levy_plot(mu, scale, canvas)}.
+		The \ac{PDF} of the Levy Distribution is calculated in \setlx\ by calling \lstinline{stat_levy(x, mu, scale)} or plotted on a given canvas by calling \lstinline{stat_levy_plot(canvas, mu, scale)}.
 		\\[0.3cm]
 		The \ac{CDF} of the Levy Distribution is defined as
 		\\[0.3cm]
 		$$F(x;\mu,c)=\textrm{erfc}\left(\sqrt{\frac{c}{2(x-\mu)}}\right)$$
 		\\[0.3cm]
 		where $erfc$ is the complementary error function.
-		The \ac{CDF} of the Levy Distribution is calculated in \setlx\ by calling \lstinline{stat_levyCDF(x, mu, scale)} or plotted on a given canvas by calling \lstinline{stat_levyCDF_plot(mu, scale, canvas)}.
+		The \ac{CDF} of the Levy Distribution is calculated in \setlx\ by calling \lstinline{stat_levyCDF(x, mu, scale)} or plotted on a given canvas by calling \lstinline{stat_levyCDF_plot(canvas, mu, scale)}.
 
 		\begin{figure}[H]
 			\centering
@@ -237,14 +242,14 @@
 		\\[0.3cm]
 		$$f_X(x) = \frac 1 x \cdot \frac 1 {\sigma\sqrt{2\pi\,}} \exp\left( -\frac{(\ln x-\mu)^2}{2\sigma^2} \right)$$
 		\\[0.3cm]
-		The \ac{PDF} of the Log-Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_logNormal(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_logNormal_plot(mu, sigma, canvas)}.
+		The \ac{PDF} of the Log-Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_logNormal(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_logNormal_plot(canvas, mu, sigma)}.
 		\\[0.3cm]
 		The \ac{CDF} of the Log-Normal Distribution is defined as
 		\\[0.3cm]
 		$$F_X(x) = \frac12 \operatorname{erfc} \left(-\frac{\ln x - \mu}{\sigma\sqrt{2}}\right)$$
 		\\[0.3cm]
 		where $erfc$ is the complementary error function.
-		The \ac{CDF} of the Log-Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_logNormalCDF(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_logNormalCDF_plot(mu, sigma, canvas)}.
+		The \ac{CDF} of the Log-Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_logNormalCDF(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_logNormalCDF_plot(canvas, mu, sigma)}.
 
 		\begin{figure}[H]
 			\centering
@@ -269,13 +274,13 @@
 		$$f(x) = e^{a x^2 + b x + c}$$
 		\\[0.3cm]
 		where $a$ is negative and $c$ is $b^2/(4a)+\ln(-a/\pi)/2$. In this form, the mean value $\mu$ is $−b/(2a)$, and the variance $\sigma^2$ is $−1/(2a)$.
-		The \ac{PDF} of the Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_normal(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_normal_plot(mu, sigma, canvas)}.
+		The \ac{PDF} of the Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_normal(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_normal_plot(canvas, mu, sigma)}.
 		\\[0.3cm]
 		The \ac{CDF} of the Normal Distribution is defined as
 		\\[0.3cm]
 		$$\Phi(x) = \frac 1 {\sqrt{2\pi}} \int_{-\infty}^x e^{-t^2/2}$$
 		\\[0.3cm]
-		The \ac{CDF} of the Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_normalCDF(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_normalCDF_plot(mu, sigma, canvas)}.
+		The \ac{CDF} of the Normal Distribution is calculated in \setlx\ by calling \lstinline{stat_normalCDF(x, mu, sigma)} or plotted on a given canvas by calling \lstinline{stat_normalCDF_plot(canvas, mu, sigma)}.
 
 		\begin{figure}[H]
 			\centering
@@ -299,13 +304,13 @@
 		\\[0.3cm]
 		$$f_X(x)= \begin{cases} \frac{\alpha x_\mathrm{m}^\alpha}{x^{\alpha+1}} & x \ge x_\mathrm{m}, \\ 0 & x < x_\mathrm{m}. \end{cases}$$
 		\\[0.3cm]
-		The \ac{PDF} of the Pareto Distribution is calculated in \setlx\ by calling \lstinline{stat_pareto(x, scale, shape)} or plotted on a given canvas by calling \lstinline{stat_pareto_plot(scale, shape, canvas)}.
+		The \ac{PDF} of the Pareto Distribution is calculated in \setlx\ by calling \lstinline{stat_pareto(x, scale, shape)} or plotted on a given canvas by calling \lstinline{stat_pareto_plot(canvas, scale, shape)}.
 		\\[0.3cm]
 		The \ac{CDF} of the Pareto Distribution is defined as
 		\\[0.3cm]
 		$$F_X(x) = \begin{cases}1-\left(\frac{x_\mathrm{m}}{x}\right)^\alpha & x \ge x_\mathrm{m}, \\0 & x < x_\mathrm{m}.\end{cases}$$
 		\\[0.3cm]
-		The \ac{CDF} of the Pareto Distribution is calculated in \setlx\ by calling \lstinline{stat_paretoCDF(x, scale, shape)} or plotted on a given canvas by calling \lstinline{stat_paretoCDF_plot(scale, shape, canvas)}.
+		The \ac{CDF} of the Pareto Distribution is calculated in \setlx\ by calling \lstinline{stat_paretoCDF(x, scale, shape)} or plotted on a given canvas by calling \lstinline{stat_paretoCDF_plot(canvas, scale, shape)}.
 
 		\begin{figure}[H]
 			\centering
@@ -329,7 +334,7 @@
 		\\[0.3cm]
 		$$f(t) = \frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\nu\pi}\,\Gamma(\frac{\nu}{2})} \left(1+\frac{t^2}{\nu} \right)^{\!-\frac{\nu+1}{2}}$$
 		\\[0.3cm]
-		where $\Gamma$ is the gamma function. The \ac{PDF} of the Student-T Distribution is calculated in \setlx\ by calling \lstinline{stat_student(x, nu)} or plotted on a given canvas by calling \lstinline{stat_student_plot(nu, canvas)}.
+		where $\Gamma$ is the gamma function. The \ac{PDF} of the Student-T Distribution is calculated in \setlx\ by calling \lstinline{stat_student(x, nu)} or plotted on a given canvas by calling \lstinline{stat_student_plot(canvas, nu)}.
 		\\[0.3cm]
 		The \ac{CDF} of the Student distribution can be written in terms of $I$, the regularized incomplete beta function. For $t > 0$
 		\\[0.3cm]
@@ -337,7 +342,7 @@
 		\\[0.3cm]
 		where $$x(t) = \frac{\nu}{{t^2+\nu}}$$
 		\\[0.3cm]
-		The \ac{CDF} of the Student-T Distribution is calculated in \setlx\ by calling \lstinline{stat_studentCDF(x, nu)} or plotted on a given canvas by calling \lstinline{stat_studentCDF_plot(nu, canvas)}.
+		The \ac{CDF} of the Student-T Distribution is calculated in \setlx\ by calling \lstinline{stat_studentCDF(x, nu)} or plotted on a given canvas by calling \lstinline{stat_studentCDF_plot(canvas, nu)}.
 
 		\begin{figure}[H]
 			\centering
@@ -361,13 +366,13 @@
 		\\[0.3cm]
 		$$f(x) = \left(\frac{k}{\gamma}\right)\left(\frac{x}{\gamma}\right)^{k-1}e^{-\left(\frac{x}{\gamma}\right)^{k}} \hspace{.3in} x \geq 0; k,\gamma > 0\\$$
 		\\[0.3cm]
-		The \ac{PDF} of the Weibull Distribution is calculated in \setlx\ by calling \lstinline{stat_weibull(x, shape, scale)} or plotted on a given canvas by calling \lstinline{stat_weibull_plot(shape, scale, canvas)}.
+		The \ac{PDF} of the Weibull Distribution is calculated in \setlx\ by calling \lstinline{stat_weibull(x, shape, scale)} or plotted on a given canvas by calling \lstinline{stat_weibull_plot(canvas, shape, scale)}.
 		\\[0.3cm]
 		The \ac{CDF} of the Weibull Distribution is defined as
 		\\[0.3cm]
 		$$F(x) = 1 - e^{-(x^{\gamma})} \hspace{.3in} x \geq 0; \gamma > 0$$
 		\\[0.3cm]
-		The \ac{CDF} of the Weibull Distribution is calculated in \setlx\ by calling \lstinline{stat_weibullCDF(x, shape, scale)} or plotted on a given canvas by calling \lstinline{stat_weibullCDF_plot(shape, scale, canvas)}.
+		The \ac{CDF} of the Weibull Distribution is calculated in \setlx\ by calling \lstinline{stat_weibullCDF(x, shape, scale)} or plotted on a given canvas by calling \lstinline{stat_weibullCDF_plot(canvas, shape, scale)}.
 		
 		\begin{figure}[H]
 			\centering
